@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduFeedback AI - Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="light-mode">
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">EF</div>
+                <div class="logo-text">Edu<span>Feedback</span> AI</div>
+            </div>
+            
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link active">
+                        <i class="fas fa-home nav-icon"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="analytics.html" class="nav-link">
+                        <i class="fas fa-chart-bar nav-icon"></i>
+                        <span>Analytics</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="feedback.html" class="nav-link">
+                        <i class="fas fa-comments nav-icon"></i>
+                        <span>Feedback</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="reports.html" class="nav-link">
+                        <i class="fas fa-file-alt nav-icon"></i>
+                        <span>Reports</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="settings.html" class="nav-link">
+                        <i class="fas fa-cog nav-icon"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="theme-toggle">
+                <button class="theme-btn active" id="light-mode-btn">
+                    <i class="fas fa-sun"></i>
+                </button>
+                <button class="theme-btn" id="dark-mode-btn">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <h1 class="header-title">AI Feedback Dashboard</h1>
+                <div class="header-actions">
+                    <div class="user-profile">
+                        <div class="user-avatar">JD</div>
+                        <span>John Doe</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </header>
+            
+            <!-- Color palette display -->
+            <div class="color-palette">
+                <div class="color-item color-1">#FFD5AF</div>
+                <div class="color-item color-2">#E59A59</div>
+                <div class="color-item color-3">#888870</div>
+                <div class="color-item color-4">#712E1E</div>
+            </div>
+            
+            <!-- Stats Cards -->
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon analysis">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="card-title">AI Analysis</h3>
+                    <p class="card-text">Intelligent analysis of student performance and feedback patterns.</p>
+                    <div class="card-stats">
+                        <div class="stat-value">1,247</div>
+                        <div class="stat-change">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>12%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon feedback">
+                        <i class="fas fa-comment-dots"></i>
+                    </div>
+                    <h3 class="card-title">Feedback Generated</h3>
+                    <p class="card-text">Personalized feedback created for students based on their work.</p>
+                    <div class="card-stats">
+                        <div class="stat-value">892</div>
+                        <div class="stat-change">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>8%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon insights">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="card-title">AI Insights</h3>
+                    <p class="card-text">Actionable insights to improve teaching strategies and outcomes.</p>
+                    <div class="card-stats">
+                        <div class="stat-value">356</div>
+                        <div class="stat-change">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>5%</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon reports">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <h3 class="card-title">Reports Generated</h3>
+                    <p class="card-text">Comprehensive reports detailing student progress and areas for improvement.</p>
+                    <div class="card-stats">
+                        <div class="stat-value">124</div>
+                        <div class="stat-change">
+                            <i class="fas fa-arrow-up"></i>
+                            <span>15%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Feedback Generator -->
+            <h2 class="section-title">
+                <i class="fas fa-robot"></i>
+                AI Feedback Generator
+            </h2>
+            
+            <div class="feedback-container">
+                <div class="input-group">
+                    <input type="text" class="input-field" placeholder="Enter student name or ID">
+                    <select class="input-field">
+                        <option value="">Select assignment</option>
+                        <option value="math">Mathematics - Calculus</option>
+                        <option value="science">Science - Biology Lab</option>
+                        <option value="english">English - Essay Writing</option>
+                    </select>
+                    <button class="btn btn-primary" id="generate-feedback">
+                        Generate Feedback
+                    </button>
+                </div>
+                
+                <div class="feedback-result">
+                    <div class="feedback-header">
+                        <div class="feedback-title">AI-Generated Feedback</div>
+                        <div class="feedback-date">Generated: Today, 2:45 PM</div>
+                    </div>
+                    <div class="feedback-text">
+                        <p>Sarah has shown excellent problem-solving skills in the calculus assignment. Her approach to derivatives demonstrates a strong conceptual understanding. However, there's room for improvement in showing step-by-step calculations, which would help in avoiding minor arithmetic errors. I recommend practicing with more complex problems to build confidence.</p>
+                        <p><strong>AI Suggestions:</strong> Try interactive calculus modules on Khan Academy for additional practice with derivatives and integrals.</p>
+                    </div>
+                    <div class="feedback-actions">
+                        <button class="btn btn-outline">
+                            <i class="fas fa-edit"></i> Edit Feedback
+                        </button>
+                        <button class="btn btn-primary">
+                            <i class="fas fa-share"></i> Send to Student
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Recent Activity -->
+            <h2 class="section-title">
+                <i class="fas fa-history"></i>
+                Recent Activity
+            </h2>
+            
+            <div class="feedback-container">
+                <div class="activity-list">
+                    <div class="activity-item">
+                        <div class="activity-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="activity-details">
+                            <h4>AI Feedback Generated</h4>
+                            <p>Feedback for Michael Johnson's essay on "Climate Change Impacts" was generated.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-item">
+                        <div class="activity-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <div class="activity-details">
+                            <h4>Performance Report Created</h4>
+                            <p>Class performance report for Mathematics - Week 12 has been generated.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-item">
+                        <div class="activity-icon">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                        <div class="activity-details">
+                            <h4>Feedback Delivered</h4>
+                            <p>Personalized feedback sent to 15 students for the Biology lab assignment.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

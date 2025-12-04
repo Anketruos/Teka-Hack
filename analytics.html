@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduFeedback AI - Analytics</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="analytics.css">
+</head>
+<body class="light-mode">
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">EF</div>
+                <div class="logo-text">Edu<span>Feedback</span> AI</div>
+            </div>
+            
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">
+                        <i class="fas fa-home nav-icon"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="analytics.html" class="nav-link active">
+                        <i class="fas fa-chart-bar nav-icon"></i>
+                        <span>Analytics</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="feedback.html" class="nav-link">
+                        <i class="fas fa-comments nav-icon"></i>
+                        <span>Feedback</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="reports.html" class="nav-link">
+                        <i class="fas fa-file-alt nav-icon"></i>
+                        <span>Reports</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="settings.html" class="nav-link">
+                        <i class="fas fa-cog nav-icon"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="theme-toggle">
+                <button class="theme-btn active" id="light-mode-btn">
+                    <i class="fas fa-sun"></i>
+                </button>
+                <button class="theme-btn" id="dark-mode-btn">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </aside>
+        
+        <main class="main-content">
+            <header class="header">
+                <h1 class="header-title">Analytics & Insights</h1>
+                <div class="header-actions">
+                    <div class="user-profile">
+                        <div class="user-avatar">JD</div>
+                        <span>John Doe</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </header>
+            
+            <div class="analytics-grid">
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3><i class="fas fa-chart-line"></i> Performance Trends</h3>
+                        <select class="time-select">
+                            <option>Last 7 days</option>
+                            <option>Last 30 days</option>
+                            <option>Last 3 months</option>
+                        </select>
+                    </div>
+                    <div class="chart-placeholder">
+                        <div class="chart-bars">
+                            <div class="bar" style="height: 80%;" data-value="80%"></div>
+                            <div class="bar" style="height: 65%;" data-value="65%"></div>
+                            <div class="bar" style="height: 90%;" data-value="90%"></div>
+                            <div class="bar" style="height: 75%;" data-value="75%"></div>
+                            <div class="bar" style="height: 85%;" data-value="85%"></div>
+                            <div class="bar" style="height: 70%;" data-value="70%"></div>
+                            <div class="bar" style="height: 95%;" data-value="95%"></div>
+                        </div>
+                        <div class="chart-labels">
+                            <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3><i class="fas fa-chart-pie"></i> Feedback Distribution</h3>
+                    </div>
+                    <div class="pie-chart-placeholder">
+                        <div class="pie-chart">
+                            <div class="pie-segment" style="--percentage: 40; --color: #E59A59;"></div>
+                            <div class="pie-segment" style="--percentage: 25; --color: #712E1E;"></div>
+                            <div class="pie-segment" style="--percentage: 20; --color: #888870;"></div>
+                            <div class="pie-segment" style="--percentage: 15; --color: #FFD5AF;"></div>
+                        </div>
+                        <div class="pie-legend">
+                            <div class="legend-item">
+                                <span class="legend-color" style="background-color: #E59A59;"></span>
+                                <span>Positive</span>
+                                <span class="legend-value">40%</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-color" style="background-color: #712E1E;"></span>
+                                <span>Constructive</span>
+                                <span class="legend-value">25%</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-color" style="background-color: #888870;"></span>
+                                <span>Needs Work</span>
+                                <span class="legend-value">20%</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-color" style="background-color: #FFD5AF;"></span>
+                                <span>Excellent</span>
+                                <span class="legend-value">15%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="metrics-card">
+                    <h3><i class="fas fa-tachometer-alt"></i> Key Metrics</h3>
+                    <div class="metrics-grid">
+                        <div class="metric">
+                            <div class="metric-value">4.2</div>
+                            <div class="metric-label">Avg. Feedback Score</div>
+                            <div class="metric-change positive">+0.3</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">92%</div>
+                            <div class="metric-label">Student Engagement</div>
+                            <div class="metric-change positive">+5%</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">3.8</div>
+                            <div class="metric-label">Response Time (hrs)</div>
+                            <div class="metric-change negative">-0.5</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-value">78%</div>
+                            <div class="metric-label">Improvement Rate</div>
+                            <div class="metric-change positive">+12%</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="insights-card">
+                    <h3><i class="fas fa-lightbulb"></i> AI Insights</h3>
+                    <div class="insights-list">
+                        <div class="insight-item">
+                            <div class="insight-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="insight-content">
+                                <h4>Performance Spike Detected</h4>
+                                <p>Mathematics scores improved by 15% after implementing AI feedback.</p>
+                            </div>
+                        </div>
+                        <div class="insight-item">
+                            <div class="insight-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="insight-content">
+                                <h4>Engagement Pattern</h4>
+                                <p>Students are most active on Tuesday and Thursday mornings.</p>
+                            </div>
+                        </div>
+                        <div class="insight-item">
+                            <div class="insight-icon">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <div class="insight-content">
+                                <h4>Attention Needed</h4>
+                                <p>3 students show declining performance trends in Science.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="table-container">
+                <h3><i class="fas fa-table"></i> Student Performance Overview</h3>
+                <table class="analytics-table">
+                    <thead>
+                        <tr>
+                            <th>Student</th>
+                            <th>Subject</th>
+                            <th>Avg Score</th>
+                            <th>Feedback Count</th>
+                            <th>Improvement</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Sarah Johnson</td>
+                            <td>Mathematics</td>
+                            <td>92%</td>
+                            <td>8</td>
+                            <td>+15%</td>
+                            <td><span class="status excellent">Excellent</span></td>
+                        </tr>
+                        <tr>
+                            <td>Michael Chen</td>
+                            <td>Science</td>
+                            <td>85%</td>
+                            <td>6</td>
+                            <td>+8%</td>
+                            <td><span class="status good">Good</span></td>
+                        </tr>
+                        <tr>
+                            <td>Emma Wilson</td>
+                            <td>English</td>
+                            <td>78%</td>
+                            <td>10</td>
+                            <td>+22%</td>
+                            <td><span class="status improving">Improving</span></td>
+                        </tr>
+                        <tr>
+                            <td>James Brown</td>
+                            <td>History</td>
+                            <td>65%</td>
+                            <td>5</td>
+                            <td>+5%</td>
+                            <td><span class="status needs-work">Needs Work</span></td>
+                        </tr>
+                        <tr>
+                            <td>Olivia Davis</td>
+                            <td>Mathematics</td>
+                            <td>95%</td>
+                            <td>7</td>
+                            <td>+10%</td>
+                            <td><span class="status excellent">Excellent</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

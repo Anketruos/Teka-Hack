@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduFeedback AI - Reports</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="reports.css">
+</head>
+<body class="light-mode">
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">EF</div>
+                <div class="logo-text">Edu<span>Feedback</span> AI</div>
+            </div>
+            
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">
+                        <i class="fas fa-home nav-icon"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="analytics.html" class="nav-link">
+                        <i class="fas fa-chart-bar nav-icon"></i>
+                        <span>Analytics</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="feedback.html" class="nav-link">
+                        <i class="fas fa-comments nav-icon"></i>
+                        <span>Feedback</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="reports.html" class="nav-link active">
+                        <i class="fas fa-file-alt nav-icon"></i>
+                        <span>Reports</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="settings.html" class="nav-link">
+                        <i class="fas fa-cog nav-icon"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="theme-toggle">
+                <button class="theme-btn active" id="light-mode-btn">
+                    <i class="fas fa-sun"></i>
+                </button>
+                <button class="theme-btn" id="dark-mode-btn">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </aside>
+        
+        <main class="main-content">
+            <header class="header">
+                <h1 class="header-title">Reports & Documents</h1>
+                <div class="header-actions">
+                    <button class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Generate Report
+                    </button>
+                    <div class="user-profile">
+                        <div class="user-avatar">JD</div>
+                        <span>John Doe</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </header>
+            
+            <div class="reports-overview">
+                <div class="overview-card">
+                    <div class="overview-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <div class="overview-content">
+                        <h3>Generated Reports</h3>
+                        <div class="overview-stats">
+                            <div class="stat">
+                                <span class="value">124</span>
+                                <span class="label">Total</span>
+                            </div>
+                            <div class="stat">
+                                <span class="value">24</span>
+                                <span class="label">This Month</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="overview-card">
+                    <div class="overview-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="overview-content">
+                        <h3>Report Types</h3>
+                        <div class="type-tags">
+                            <span class="tag">Performance</span>
+                            <span class="tag">Progress</span>
+                            <span class="tag">Feedback</span>
+                            <span class="tag">Analytics</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="overview-card">
+                    <div class="overview-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="overview-content">
+                        <h3>Recent Activity</h3>
+                        <p>Last report generated: Today, 9:30 AM</p>
+                        <a href="#" class="view-all">View All Activity →</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="reports-controls">
+                <div class="controls-left">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search reports...">
+                    </div>
+                    <select class="filter-select">
+                        <option>All Report Types</option>
+                        <option>Student Performance</option>
+                        <option>Class Progress</option>
+                        <option>Feedback Analysis</option>
+                    </select>
+                </div>
+                <div class="controls-right">
+                    <button class="btn btn-outline">
+                        <i class="fas fa-filter"></i> Filter
+                    </button>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-download"></i> Export All
+                    </button>
+                </div>
+            </div>
+            
+            <div class="reports-grid">
+                <div class="report-card">
+                    <div class="report-header">
+                        <div class="report-icon">
+                            <i class="fas fa-user-graduate"></i>
+                        </div>
+                        <div class="report-actions">
+                            <button class="icon-btn">
+                                <i class="fas fa-download"></i>
+                            </button>
+                            <button class="icon-btn">
+                                <i class="fas fa-share"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="report-content">
+                        <h4>Student Performance Report</h4>
+                        <p>Comprehensive analysis of individual student performance across all subjects.</p>
+                        <div class="report-meta">
+                            <span><i class="fas fa-calendar"></i> Nov 15, 2023</span>
+                            <span><i class="fas fa-file-pdf"></i> PDF, 2.4 MB</span>
+                        </div>
+                    </div>
+                    <div class="report-footer">
+                        <span class="status completed">Completed</span>
+                        <button class="btn-sm">
+                            <i class="fas fa-eye"></i> Preview
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="report-card">
+                    <div class="report-header">
+                        <div class="report-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <div class="report-actions">
+                            <button class="icon-btn">
+                                <i class="fas fa-download"></i>
+                            </button>
+                            <button class="icon-btn">
+                                <i class="fas fa-share"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="report-content">
+                        <h4>Class Progress Analysis</h4>
+                        <p>Quarterly progress report showing class-wide trends and improvement areas.</p>
+                        <div class="report-meta">
+                            <span><i class="fas fa-calendar"></i> Nov 10, 2023</span>
+                            <span><i class="fas fa-file-excel"></i> Excel, 1.8 MB</span>
+                        </div>
+                    </div>
+                    <div class="report-footer">
+                        <span class="status completed">Completed</span>
+                        <button class="btn-sm">
+                            <i class="fas fa-eye"></i> Preview
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="report-card">
+                    <div class="report-header">
+                        <div class="report-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div class="report-actions">
+                            <button class="icon-btn">
+                                <i class="fas fa-download"></i>
+                            </button>
+                            <button class="icon-btn">
+                                <i class="fas fa-share"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="report-content">
+                        <h4>Feedback Effectiveness Report</h4>
+                        <p>Analysis of feedback impact on student performance and engagement.</p>
+                        <div class="report-meta">
+                            <span><i class="fas fa-calendar"></i> Nov 5, 2023</span>
+                            <span><i class="fas fa-file-pdf"></i> PDF, 3.1 MB</span>
+                        </div>
+                    </div>
+                    <div class="report-footer">
+                        <span class="status completed">Completed</span>
+                        <button class="btn-sm">
+                            <i class="fas fa-eye"></i> Preview
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="report-card">
+                    <div class="report-header">
+                        <div class="report-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <div class="report-actions">
+                            <button class="icon-btn">
+                                <i class="fas fa-download"></i>
+                            </button>
+                            <button class="icon-btn">
+                                <i class="fas fa-share"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="report-content">
+                        <h4>AI Model Performance</h4>
+                        <p>Technical report on AI feedback generation accuracy and improvements.</p>
+                        <div class="report-meta">
+                            <span><i class="fas fa-calendar"></i> Oct 28, 2023</span>
+                            <span><i class="fas fa-file-pdf"></i> PDF, 4.2 MB</span>
+                        </div>
+                    </div>
+                    <div class="report-footer">
+                        <span class="status pending">Generating...</span>
+                        <button class="btn-sm" disabled>
+                            <i class="fas fa-spinner fa-spin"></i> Processing
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="report-generator">
+                <h3><i class="fas fa-magic"></i> Generate New Report</h3>
+                <div class="generator-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Report Type</label>
+                            <select class="form-input">
+                                <option>Select Report Type</option>
+                                <option>Student Performance</option>
+                                <option>Class Progress</option>
+                                <option>Feedback Analysis</option>
+                                <option>AI Performance</option>
+                                <option>Custom Report</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Time Period</label>
+                            <select class="form-input">
+                                <option>Select Period</option>
+                                <option>Last 7 days</option>
+                                <option>Last 30 days</option>
+                                <option>Last quarter</option>
+                                <option>Custom range</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Students</label>
+                            <select class="form-input">
+                                <option>All Students</option>
+                                <option>Specific Students</option>
+                                <option>By Class</option>
+                                <option>By Performance Level</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Format</label>
+                            <div class="format-options">
+                                <label class="format-option">
+                                    <input type="radio" name="format" checked>
+                                    <span class="format-label">
+                                        <i class="fas fa-file-pdf"></i>
+                                        PDF
+                                    </span>
+                                </label>
+                                <label class="format-option">
+                                    <input type="radio" name="format">
+                                    <span class="format-label">
+                                        <i class="fas fa-file-excel"></i>
+                                        Excel
+                                    </span>
+                                </label>
+                                <label class="format-option">
+                                    <input type="radio" name="format">
+                                    <span class="format-label">
+                                        <i class="fas fa-file-word"></i>
+                                        Word
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Additional Options</label>
+                        <div class="checkboxes">
+                            <label class="checkbox">
+                                <input type="checkbox" checked>
+                                <span>Include AI Insights</span>
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox" checked>
+                                <span>Include Recommendations</span>
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                <span>Include Raw Data</span>
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox" checked>
+                                <span>Include Charts & Graphs</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button class="btn btn-outline">
+                            <i class="fas fa-times"></i> Cancel
+                        </button>
+                        <button class="btn btn-primary">
+                            <i class="fas fa-play"></i> Generate Report
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

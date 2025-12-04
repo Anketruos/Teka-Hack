@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduFeedback AI - Settings</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="settings.css">
+</head>
+<body class="light-mode">
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">EF</div>
+                <div class="logo-text">Edu<span>Feedback</span> AI</div>
+            </div>
+            
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">
+                        <i class="fas fa-home nav-icon"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="analytics.html" class="nav-link">
+                        <i class="fas fa-chart-bar nav-icon"></i>
+                        <span>Analytics</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="feedback.html" class="nav-link">
+                        <i class="fas fa-comments nav-icon"></i>
+                        <span>Feedback</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="reports.html" class="nav-link">
+                        <i class="fas fa-file-alt nav-icon"></i>
+                        <span>Reports</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="settings.html" class="nav-link active">
+                        <i class="fas fa-cog nav-icon"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="theme-toggle">
+                <button class="theme-btn active" id="light-mode-btn">
+                    <i class="fas fa-sun"></i>
+                </button>
+                <button class="theme-btn" id="dark-mode-btn">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </aside>
+        
+        <main class="main-content">
+            <header class="header">
+                <h1 class="header-title">Settings</h1>
+                <div class="header-actions">
+                    <div class="user-profile">
+                        <div class="user-avatar">JD</div>
+                        <span>John Doe</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </header>
+            
+            <div class="settings-tabs">
+                <button class="tab-btn active" data-tab="general">General</button>
+                <button class="tab-btn" data-tab="ai">AI Settings</button>
+                <button class="tab-btn" data-tab="notifications">Notifications</button>
+                <button class="tab-btn" data-tab="account">Account</button>
+                <button class="tab-btn" data-tab="integrations">Integrations</button>
+            </div>
+            
+            <div class="settings-content">
+                <!-- General Settings -->
+                <div class="tab-pane active" id="general">
+                    <div class="settings-section">
+                        <h3><i class="fas fa-sliders-h"></i> General Preferences</h3>
+                        <div class="settings-group">
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Language</h4>
+                                    <p>Select your preferred language for the interface</p>
+                                </div>
+                                <select class="setting-input">
+                                    <option>English</option>
+                                    <option>Spanish</option>
+                                    <option>French</option>
+                                    <option>German</option>
+                                </select>
+                            </div>
+                            
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Time Zone</h4>
+                                    <p>Set your local time zone for accurate timestamps</p>
+                                </div>
+                                <select class="setting-input">
+                                    <option>UTC-05:00 Eastern Time</option>
+                                    <option>UTC-08:00 Pacific Time</option>
+                                    <option>UTC+00:00 GMT</option>
+                                    <option>UTC+01:00 Central European Time</option>
+                                </select>
+                            </div>
+                            
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Date Format</h4>
+                                    <p>Choose how dates are displayed</p>
+                                </div>
+                                <div class="format-options">
+                                    <label class="format-option">
+                                        <input type="radio" name="date-format" checked>
+                                        <span>MM/DD/YYYY</span>
+                                    </label>
+                                    <label class="format-option">
+                                        <input type="radio" name="date-format">
+                                        <span>DD/MM/YYYY</span>
+                                    </label>
+                                    <label class="format-option">
+                                        <input type="radio" name="date-format">
+                                        <span>YYYY-MM-DD</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-section">
+                        <h3><i class="fas fa-paint-brush"></i> Display Settings</h3>
+                        <div class="settings-group">
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Default Theme</h4>
+                                    <p>Choose your preferred color theme</p>
+                                </div>
+                                <div class="theme-options">
+                                    <div class="theme-option">
+                                        <div class="theme-preview light-theme"></div>
+                                        <span>Light</span>
+                                    </div>
+                                    <div class="theme-option">
+                                        <div class="theme-preview dark-theme"></div>
+                                        <span>Dark</span>
+                                    </div>
+                                    <div class="theme-option">
+                                        <div class="theme-preview auto-theme"></div>
+                                        <span>Auto</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Font Size</h4>
+                                    <p>Adjust the text size for better readability</p>
+                                </div>
+                                <div class="slider-container">
+                                    <input type="range" min="12" max="20" value="16" class="font-slider">
+                                    <div class="slider-labels">
+                                        <span>Small</span>
+                                        <span>Medium</span>
+                                        <span>Large</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- AI Settings -->
+                <div class="tab-pane" id="ai">
+                    <div class="settings-section">
+                        <h3><i class="fas fa-robot"></i> AI Configuration</h3>
+                        <div class="settings-group">
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>AI Model</h4>
+                                    <p>Select the AI model for feedback generation</p>
+                                </div>
+                                <select class="setting-input">
+                                    <option>GPT-4 (Recommended)</option>
+                                    <option>GPT-3.5 Turbo</option>
+                                    <option>Claude 2</option>
+                                    <option>Gemini Pro</option>
+                                </select>
+                            </div>
+                            
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Feedback Tone</h4>
+                                    <p>Adjust the tone of generated feedback</p>
+                                </div>
+                                <div class="slider-container">
+                                    <input type="range" min="1" max="5" value="3" class="tone-slider">
+                                    <div class="slider-labels">
+                                        <span>Formal</span>
+                                        <span>Balanced</span>
+                                        <span>Encouraging</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Feedback Length</h4>
+                                    <p>Set the preferred length of generated feedback</p>
+                                </div>
+                                <div class="slider-container">
+                                    <input type="range" min="1" max="5" value="3" class="length-slider">
+                                    <div class="slider-labels">
+                                        <span>Brief</span>
+                                        <span>Standard</span>
+                                        <span>Detailed</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-section">
+                        <h3><i class="fas fa-magic"></i> Advanced AI Features</h3>
+                        <div class="settings-group">
+                            <div class="setting-item toggle-item">
+                                <div class="setting-info">
+                                    <h4>Automatic Grammar Correction</h4>
+                                    <p>Automatically correct grammar in student submissions</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            
+                            <div class="setting-item toggle-item">
+                                <div class="setting-info">
+                                    <h4>Plagiarism Detection</h4>
+                                    <p>Check submissions for potential plagiarism</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            
+                            <div class="setting-item toggle-item">
+                                <div class="setting-info">
+                                    <h4>Learning Style Adaptation</h4>
+                                    <p>Adapt feedback to individual learning styles</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Notifications -->
+                <div class="tab-pane" id="notifications">
+                    <div class="settings-section">
+                        <h3><i class="fas fa-bell"></i> Notification Preferences</h3>
+                        <div class="settings-group">
+                            <div class="setting-item toggle-item">
+                                <div class="setting-info">
+                                    <h4>Email Notifications</h4>
+                                    <p>Receive updates and alerts via email</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            
+                            <div class="setting-item toggle-item">
+                                <div class="setting-info">
+                                    <h4>Push Notifications</h4>
+                                    <p>Get instant notifications in your browser</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Notification Frequency</h4>
+                                    <p>How often you want to receive notifications</p>
+                                </div>
+                                <select class="setting-input">
+                                    <option>Immediately</option>
+                                    <option>Hourly Digest</option>
+                                    <option>Daily Digest</option>
+                                    <option>Weekly Summary</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-section">
+                        <h3><i class="fas fa-envelope"></i> Email Settings</h3>
+                        <div class="settings-group">
+                            <div class="setting-item toggle-item">
+                                <div class="setting-info">
+                                    <h4>Feedback Ready Alerts</h4>
+                                    <p>Get notified when AI feedback is generated</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            
+                            <div class="setting-item toggle-item">
+                                <div class="setting-info">
+                                    <h4>Report Generation Alerts</h4>
+                                    <p>Receive notifications when reports are ready</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            
+                            <div class="setting-item toggle-item">
+                                <div class="setting-info">
+                                    <h4>Weekly Performance Summary</h4>
+                                    <p>Get weekly summaries of student performance</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Account Settings -->
+                <div class="tab-pane" id="account">
+                    <div class="settings-section">
+                        <h3><i class="fas fa-user"></i> Profile Information</h3>
+                        <div class="profile-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>First Name</label>
+                                    <input type="text" class="form-input" value="John">
+                                </div>
+                                <div class="form-group">
+                                    <label>Last Name</label>
+                                    <input type="text" class="form-input" value="Doe">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Email Address</label>
+                                <input type="email" class="form-input" value="john.doe@example.com">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Institution</label>
+                                <input type="text" class="form-input" value="University of Technology">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Role/Position</label>
+                                <select class="form-input">
+                                    <option>Professor</option>
+                                    <option>Teaching Assistant</option>
+                                    <option>Instructor</option>
+                                    <option>Administrator</option>
+                                </select>
+                            </div>
+                            
+                            <button class="btn btn-primary">
+                                <i class="fas fa-save"></i> Save Changes
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-section">
+                        <h3><i class="fas fa-lock"></i> Security</h3>
+                        <div class="security-settings">
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Change Password</h4>
+                                    <p>Update your account password</p>
+                                </div>
+                                <button class="btn btn-outline">
+                                    Change Password
+                                </button>
+                            </div>
+                            
+                            <div class="setting-item toggle-item">
+                                <div class="setting-info">
+                                    <h4>Two-Factor Authentication</h4>
+                                    <p>Add an extra layer of security to your account</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Active Sessions</h4>
+                                    <p>View and manage your active login sessions</p>
+                                </div>
+                                <button class="btn btn-outline">
+                                    Manage Sessions
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Integrations -->
+                <div class="tab-pane" id="integrations">
+                    <div class="settings-section">
+                        <h3><i class="fas fa-plug"></i> Connected Services</h3>
+                        <div class="integrations-list">
+                            <div class="integration-item">
+                                <div class="integration-icon">
+                                    <i class="fab fa-google-drive"></i>
+                                </div>
+                                <div class="integration-info">
+                                    <h4>Google Drive</h4>
+                                    <p>Import assignments and export reports directly to Google Drive</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            
+                            <div class="integration-item">
+                                <div class="integration-icon">
+                                    <i class="fab fa-microsoft"></i>
+                                </div>
+                                <div class="integration-info">
+                                    <h4>Microsoft Teams</h4>
+                                    <p>Share feedback and reports directly in Teams</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            
+                            <div class="integration-item">
+                                <div class="integration-icon">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <div class="integration-info">
+                                    <h4>Canvas LMS</h4>
+                                    <p>Sync with Canvas for automatic assignment import</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            
+                            <div class="integration-item">
+                                <div class="integration-icon">
+                                    <i class="fab fa-slack"></i>
+                                </div>
+                                <div class="integration-info">
+                                    <h4>Slack</h4>
+                                    <p>Receive notifications and share updates in Slack</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-section">
+                        <h3><i class="fas fa-code"></i> API Access</h3>
+                        <div class="api-settings">
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>API Key</h4>
+                                    <p>Your personal API key for programmatic access</p>
+                                </div>
+                                <div class="api-key">
+                                    <code>sk_live_ef_1234567890abcdef</code>
+                                    <button class="btn-icon">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Webhooks</h4>
+                                    <p>Configure webhooks for real-time updates</p>
+                                </div>
+                                <button class="btn btn-outline">
+                                    <i class="fas fa-plus"></i> Add Webhook
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="settings-actions">
+                <button class="btn btn-outline">
+                    <i class="fas fa-times"></i> Cancel
+                </button>
+                <button class="btn btn-primary">
+                    <i class="fas fa-save"></i> Save All Changes
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Settings page specific functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab switching
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabPanes = document.querySelectorAll('.tab-pane');
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Remove active class from all tabs and panes
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    tabPanes.forEach(p => p.classList.remove('active'));
+                    
+                    // Add active class to current tab and pane
+                    this.classList.add('active');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // Toggle switches
+            const toggleSwitches = document.querySelectorAll('.toggle-switch input');
+            toggleSwitches.forEach(switchEl => {
+                switchEl.addEventListener('change', function() {
+                    const parent = this.closest('.toggle-item');
+                    if (this.checked) {
+                        parent.classList.add('active');
+                    } else {
+                        parent.classList.remove('active');
+                    }
+                });
+            });
+            
+            // Copy API key
+            const copyBtn = document.querySelector('.api-key .btn-icon');
+            if (copyBtn) {
+                copyBtn.addEventListener('click', function() {
+                    const apiKey = this.parentElement.querySelector('code').textContent;
+                    navigator.clipboard.writeText(apiKey).then(() => {
+                        const originalIcon = this.innerHTML;
+                        this.innerHTML = '<i class="fas fa-check"></i>';
+                        setTimeout(() => {
+                            this.innerHTML = originalIcon;
+                        }, 2000);
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
