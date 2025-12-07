@@ -1,4 +1,4 @@
-/* Reports Page Specific Styles */
+/* reports.css - Reports Page Specific Styles */
 .reports-overview {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -258,31 +258,6 @@
     color: #FF9800;
 }
 
-.btn-sm {
-    padding: 6px 16px;
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
-    background-color: var(--sidebar-bg);
-    color: var(--text-color);
-    font-family: 'Inter', sans-serif;
-    font-size: 0.9rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    transition: all 0.2s ease;
-}
-
-.btn-sm:hover:not(:disabled) {
-    background-color: var(--color-primary-light);
-    border-color: var(--color-primary);
-}
-
-.btn-sm:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-}
-
 .report-generator {
     background-color: var(--card-bg);
     border-radius: 16px;
@@ -320,15 +295,6 @@
 .form-group label {
     font-weight: 500;
     color: var(--text-color);
-}
-
-.form-input {
-    padding: 0.8rem 1rem;
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
-    background-color: var(--input-bg);
-    color: var(--text-color);
-    font-family: 'Inter', sans-serif;
 }
 
 .format-options {

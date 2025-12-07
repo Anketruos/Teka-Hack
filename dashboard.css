@@ -1,0 +1,219 @@
+/* dashboard.css - Dashboard Specific Styles */
+
+/* Cards Grid */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.card-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.2rem;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.card-icon.analysis {
+    background: linear-gradient(135deg, var(--color-primary), #f5a623);
+}
+
+.card-icon.feedback {
+    background: linear-gradient(135deg, var(--color-secondary), #6b8e23);
+}
+
+.card-icon.insights {
+    background: linear-gradient(135deg, var(--color-accent), #8b4513);
+}
+
+.card-icon.reports {
+    background: linear-gradient(135deg, #712E1E, #4a1f14);
+}
+
+.card-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.card-text {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+}
+
+.card-stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stat-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--color-primary);
+}
+
+.stat-change {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 20px;
+    background-color: var(--color-primary-light);
+    color: var(--color-accent);
+}
+
+/* Section Titles */
+.section-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section-title i {
+    color: var(--color-primary);
+}
+
+/* Feedback Container */
+.feedback-container {
+    background-color: var(--card-bg);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-color);
+}
+
+.input-group {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.feedback-result {
+    background-color: var(--sidebar-bg);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    border-left: 4px solid var(--color-primary);
+}
+
+.feedback-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.feedback-title {
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+.feedback-date {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.feedback-text {
+    line-height: 1.7;
+    color: var(--text-color);
+}
+
+.feedback-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+/* Recent Activity */
+.activity-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.activity-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.2rem;
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    border-left: 4px solid var(--color-secondary);
+}
+
+.activity-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    background-color: var(--color-primary-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-accent);
+    font-size: 1.2rem;
+}
+
+.activity-details h4 {
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.activity-details p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Color palette display */
+.color-palette {
+    display: flex;
+    margin: 2rem 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    max-width: 500px;
+}
+
+.color-item {
+    flex: 1;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.color-1 { background-color: #FFD5AF; color: #333; }
+.color-2 { background-color: #E59A59; }
+.color-3 { background-color: #888870; }
+.color-4 { background-color: #712E1E; }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .input-group {
+        flex-direction: column;
+    }
+}
