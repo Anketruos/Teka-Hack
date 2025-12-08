@@ -384,4 +384,8 @@
     .checkboxes {
         grid-template-columns: 1fr;
     }
+    
+    .reports-overview {
+        grid-template-columns: 1fr;
+    }
 }

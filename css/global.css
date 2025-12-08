@@ -1,4 +1,4 @@
-/* global.css - Design System */
+/* global.css - Complete Design System */
 :root {
     /* Primary colors from your palette */
     --color-primary-light: #FFD5AF;
@@ -220,6 +220,9 @@ body {
     font-size: 1rem;
     cursor: pointer;
     transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .btn-primary {
@@ -263,7 +266,7 @@ body {
 }
 
 /* Form Elements */
-.input-field, .form-input, .filter-select {
+.input-field, .form-input, .filter-select, .setting-input {
     padding: 0.8rem 1rem;
     border-radius: 8px;
     border: 1px solid var(--border-color);
@@ -273,12 +276,12 @@ body {
     font-size: 1rem;
 }
 
-.input-field:focus, .form-input:focus {
+.input-field:focus, .form-input:focus, .filter-select:focus {
     outline: none;
     border-color: var(--color-primary);
 }
 
-/* Card Styles */
+/* Card Base Styles */
 .card {
     background-color: var(--card-bg);
     border-radius: 16px;
@@ -292,6 +295,48 @@ body {
     transform: translateY(-5px);
     box-shadow: var(--hover-shadow);
 }
+
+/* Section Titles */
+.section-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section-title i {
+    color: var(--color-primary);
+}
+
+/* Color palette display */
+.color-palette {
+    display: flex;
+    margin: 2rem 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    max-width: 500px;
+}
+
+.color-item {
+    flex: 1;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.color-1 { background-color: #FFD5AF; color: #333; }
+.color-2 { background-color: #E59A59; }
+.color-3 { background-color: #888870; }
+.color-4 { background-color: #712E1E; }
 
 /* Responsive Design */
 @media (max-width: 1024px) {
@@ -341,5 +386,9 @@ body {
     
     .sidebar {
         padding: 1rem;
+    }
+    
+    .btn {
+        padding: 0.8rem 1.5rem;
     }
 }

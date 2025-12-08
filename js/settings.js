@@ -53,5 +53,21 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // Save all changes button
+    const saveAllBtn = document.querySelector('.settings-actions .btn-primary');
+    if (saveAllBtn) {
+        saveAllBtn.addEventListener('click', function() {
+            const originalText = this.innerHTML;
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
+            this.disabled = true;
+            
+            setTimeout(() => {
+                alert('All settings have been saved successfully!');
+                this.innerHTML = originalText;
+                this.disabled = false;
+            }, 1500);
+        });
+    }
+    
     console.log('Settings page loaded - Settings management active');
 });

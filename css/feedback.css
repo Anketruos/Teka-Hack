@@ -342,4 +342,10 @@
     .feedback-meta {
         align-items: flex-start;
     }
+    
+    .list-header {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
 }

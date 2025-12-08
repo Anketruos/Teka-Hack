@@ -41,7 +41,7 @@ const currentPage = window.location.pathname.split('/').pop() || 'index.html';
 
 navLinks.forEach(link => {
     const linkHref = link.getAttribute('href');
-    if (linkHref === currentPage) {
+    if (linkHref === currentPage || (currentPage === '' && linkHref === 'index.html')) {
         link.classList.add('active');
     }
     
