@@ -300,14 +300,7 @@
             </button>
         </form>
         
-        <div class="divider">
-            <span>or</span>
-        </div>
-        
-        <button class="demo-login" onclick="demoLogin()">
-            <i class="fas fa-play-circle"></i>
-            Try Demo Account
-        </button>
+
         
         <div class="signup-link">
             Don't have an account? <a href="register.html">Sign up here</a>
@@ -371,15 +364,6 @@
                 window.location.href = 'index.html';
             }, 1500);
         });
-
-        // Demo login function
-        function demoLogin() {
-            localStorage.setItem('userLoggedIn', 'true');
-            localStorage.setItem('userEmail', 'demo@evalytics.com');
-            localStorage.setItem('userName', 'Demo User');
-            
-            window.location.href = 'index.html';
-        }
     </script>
 </body>
 </html>

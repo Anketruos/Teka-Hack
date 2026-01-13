@@ -149,6 +149,30 @@ body {
     border: 1px solid var(--border-color);
     flex-shrink: 0;
     min-height: 44px;
+    margin-bottom: 1rem;
+}
+
+.logout-btn {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+.logout-btn:hover {
+    background: #c82333;
 }
 
 .theme-btn {

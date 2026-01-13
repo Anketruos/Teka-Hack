@@ -64,6 +64,10 @@
                     <i class="fas fa-moon"></i>
                 </button>
             </div>
+            
+            <button class="logout-btn" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
         </aside>
         
         <main class="main-content">
@@ -538,5 +542,16 @@
 
     <script src="js/script.js"></script>
     <script src="js/settings.js"></script>
+    <script>
+        // Logout function for teachers
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                localStorage.removeItem('userLoggedIn');
+                localStorage.removeItem('userEmail');
+                localStorage.removeItem('userName');
+                window.location.href = 'login.html';
+            }
+        }
+    </script>
 </body>
 </html>
