@@ -55,7 +55,7 @@ EduFeedback AI is an intelligent feedback generation platform that helps educato
 3. **Theme System**: Building a robust light/dark mode toggle
 4. **Responsive Design**: Ensuring compatibility across devices
 
-## 📚 What I Learned
+## 📚 What We Learned
 - Advanced CSS Grid and Flexbox techniques
 - JavaScript DOM manipulation and event handling
 - Local storage for theme persistence
