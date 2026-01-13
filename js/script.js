@@ -62,7 +62,7 @@ prefersDarkScheme.addEventListener('change', (e) => {
     }
 });
 
-console.log('Shared scripts loaded - EduFeedback AI System');
+console.log('Shared scripts loaded - Evalytics System');
 
 // Authentication and User Management
 // Check authentication status
@@ -443,7 +443,7 @@ function handleGenericExport(button) {
 
 // Sample data generators
 function generateSampleReport() {
-    return `EDUFEEDBACK AI - PERFORMANCE REPORT
+    return `EVALYTICS - PERFORMANCE REPORT
 
 Generated: ${new Date().toLocaleString()}
 

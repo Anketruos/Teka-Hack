@@ -1,4 +1,4 @@
-# EduFeedback AI - Deployment Guide
+# Evalytics - Deployment Guide
 
 ## 🚀 Quick Start
 
@@ -18,7 +18,7 @@ The project can be deployed to any static hosting service:
 ## 📁 Project Structure
 
 ```
-edufeedback-ai/
+evalytics/
 ├── index.html              # Main dashboard
 ├── about.html              # About/landing page
 ├── analytics.html          # Analytics dashboard

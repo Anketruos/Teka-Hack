@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Login - Evalytics</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --card-bg: #ffffff;
+            --text-color: #333333;
+            --text-secondary: #666666;
+            --border-color: #e0e0e0;
+            --input-bg: #ffffff;
+            --shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .dark-mode {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-color: #f0f0f0;
+            --text-secondary: #b0b0b0;
+            --border-color: #333333;
+            --input-bg: #2a2a2a;
+            --shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #E59A59 0%, #712E1E 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-color);
+        }
+        
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: var(--card-bg);
+            border-radius: 50px;
+            padding: 4px;
+            border: 1px solid var(--border-color);
+            z-index: 1000;
+        }
+
+        .theme-btn {
+            border: none;
+            background: transparent;
+            color: var(--text-color);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: all 0.2s ease;
+        }
+
+        .theme-btn.active {
+            background-color: #E59A59;
+            color: white;
+        }
+        
+        .login-container {
+            background: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            padding: 3rem;
+            width: 100%;
+            max-width: 450px;
+            margin: 2rem;
+        }
+        
+        .logo-container {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .logo-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #E59A59, #712E1E);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin: 0 auto 1rem;
+        }
+        
+        .logo-text {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--text-color);
+        }
+        
+        .auth-tabs {
+            display: flex;
+            margin-bottom: 2rem;
+            background: var(--input-bg);
+            border-radius: 10px;
+            padding: 4px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .auth-tab {
+            flex: 1;
+            padding: 0.8rem;
+            text-align: center;
+            border: none;
+            background: transparent;
+            color: var(--text-secondary);
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+        
+        .auth-tab.active {
+            background: #E59A59;
+            color: white;
+        }
+        
+        .login-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+        
+        .login-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            font-family: 'Inter', sans-serif;
+            background: var(--input-bg);
+            color: var(--text-color);
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #E59A59;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #E59A59, #712E1E);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .back-link {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        
+        .back-link a {
+            color: #E59A59;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .back-link a:hover {
+            text-decoration: underline;
+        }
+        
+        .student-info {
+            background: var(--input-bg);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #E59A59;
+            border: 1px solid var(--border-color);
+        }
+        
+        .student-info h4 {
+            color: #E59A59;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+        
+        .student-info p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .auth-form {
+            display: none;
+        }
+
+        .auth-form.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="light-mode">
+    <div class="theme-toggle">
+        <button class="theme-btn active" id="light-mode-btn">
+            <i class="fas fa-sun"></i>
+        </button>
+        <button class="theme-btn" id="dark-mode-btn">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+
+    <div class="login-container">
+        <div class="logo-container">
+            <div class="logo-icon">E</div>
+            <div class="logo-text">Evalytics</div>
+        </div>
+        
+        <div class="auth-tabs">
+            <button class="auth-tab active" data-tab="signin">Sign In</button>
+            <button class="auth-tab" data-tab="signup">Sign Up</button>
+        </div>
+        
+        <!-- Sign In Form -->
+        <div id="signin-form" class="auth-form active">
+            <h1 class="login-title">Welcome Back</h1>
+            <p class="login-subtitle">Enter your student ID and name to access your dashboard</p>
+            
+            <div class="student-info">
+                <h4><i class="fas fa-info-circle"></i> For Existing Students</h4>
+                <p>Use your student ID and full name as provided by your teacher to sign in.</p>
+            </div>
+            
+            <form id="studentSignInForm">
+                <div class="form-group">
+                    <label for="signinStudentId">
+                        <i class="fas fa-id-card"></i> Student ID
+                    </label>
+                    <input type="text" id="signinStudentId" class="form-input" placeholder="Enter your student ID" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="signinStudentName">
+                        <i class="fas fa-user"></i> Full Name
+                    </label>
+                    <input type="text" id="signinStudentName" class="form-input" placeholder="Enter your full name" required>
+                </div>
+                
+                <button type="submit" class="btn" id="signinBtn">
+                    <i class="fas fa-sign-in-alt"></i> Sign In
+                </button>
+            </form>
+        </div>
+        
+        <!-- Sign Up Form -->
+        <div id="signup-form" class="auth-form">
+            <h1 class="login-title">Create Account</h1>
+            <p class="login-subtitle">Create your student account to get started</p>
+            
+            <div class="student-info">
+                <h4><i class="fas fa-info-circle"></i> For New Students</h4>
+                <p>Create a new account with your student ID and personal information.</p>
+            </div>
+            
+            <form id="studentSignUpForm">
+                <div class="form-group">
+                    <label for="signupStudentId">
+                        <i class="fas fa-id-card"></i> Student ID
+                    </label>
+                    <input type="text" id="signupStudentId" class="form-input" placeholder="Enter your student ID" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="signupStudentName">
+                        <i class="fas fa-user"></i> Full Name
+                    </label>
+                    <input type="text" id="signupStudentName" class="form-input" placeholder="Enter your full name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="signupClass">
+                        <i class="fas fa-graduation-cap"></i> Class/Grade
+                    </label>
+                    <input type="text" id="signupClass" class="form-input" placeholder="Enter your class or grade" required>
+                </div>
+                
+                <button type="submit" class="btn" id="signupBtn">
+                    <i class="fas fa-user-plus"></i> Sign Up
+                </button>
+            </form>
+        </div>
+        
+        <div class="back-link">
+            <a href="landing.html">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Theme toggle functionality
+        const lightModeBtn = document.getElementById('light-mode-btn');
+        const darkModeBtn = document.getElementById('dark-mode-btn');
+        const body = document.body;
+
+        // Check for saved theme
+        const savedTheme = localStorage.getItem('studentTheme') || 'light';
+        if (savedTheme === 'dark') {
+            enableDarkMode();
+        } else {
+            enableLightMode();
+        }
+
+        lightModeBtn.addEventListener('click', enableLightMode);
+        darkModeBtn.addEventListener('click', enableDarkMode);
+
+        function enableLightMode() {
+            body.classList.remove('dark-mode');
+            body.classList.add('light-mode');
+            lightModeBtn.classList.add('active');
+            darkModeBtn.classList.remove('active');
+            localStorage.setItem('studentTheme', 'light');
+        }
+
+        function enableDarkMode() {
+            body.classList.remove('light-mode');
+            body.classList.add('dark-mode');
+            darkModeBtn.classList.add('active');
+            lightModeBtn.classList.remove('active');
+            localStorage.setItem('studentTheme', 'dark');
+        }
+
+        // Tab switching functionality
+        document.querySelectorAll('.auth-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                const tabName = this.getAttribute('data-tab');
+                
+                // Update tab active state
+                document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Show corresponding form
+                document.querySelectorAll('.auth-form').forEach(form => form.classList.remove('active'));
+                document.getElementById(tabName + '-form').classList.add('active');
+            });
+        });
+
+        // Sign In Form
+        document.getElementById('studentSignInForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const studentId = document.getElementById('signinStudentId').value.trim();
+            const studentName = document.getElementById('signinStudentName').value.trim();
+            const signinBtn = document.getElementById('signinBtn');
+            
+            if (!studentId || !studentName) {
+                alert('Please enter both your Student ID and Full Name.');
+                return;
+            }
+            
+            // Show loading state
+            signinBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing in...';
+            signinBtn.disabled = true;
+            
+            // Simulate sign in process
+            setTimeout(() => {
+                // Check if student exists (in real app, this would check database)
+                const existingStudents = JSON.parse(localStorage.getItem('registeredStudents')) || [];
+                const student = existingStudents.find(s => s.id === studentId && s.name.toLowerCase() === studentName.toLowerCase());
+                
+                if (student) {
+                    // Store student info
+                    localStorage.setItem('studentLoggedIn', 'true');
+                    localStorage.setItem('studentId', studentId);
+                    localStorage.setItem('studentName', studentName);
+                    localStorage.setItem('studentClass', student.class || '');
+                    localStorage.setItem('loginTime', new Date().toISOString());
+                    
+                    // Redirect to student dashboard
+                    window.location.href = 'student-dashboard.html';
+                } else {
+                    alert('Student not found. Please check your ID and name, or sign up if you are a new student.');
+                    signinBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Sign In';
+                    signinBtn.disabled = false;
+                }
+            }, 1500);
+        });
+
+        // Sign Up Form
+        document.getElementById('studentSignUpForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const studentId = document.getElementById('signupStudentId').value.trim();
+            const studentName = document.getElementById('signupStudentName').value.trim();
+            const studentClass = document.getElementById('signupClass').value.trim();
+            const signupBtn = document.getElementById('signupBtn');
+            
+            if (!studentId || !studentName || !studentClass) {
+                alert('Please fill in all fields.');
+                return;
+            }
+            
+            // Show loading state
+            signupBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Creating account...';
+            signupBtn.disabled = true;
+            
+            // Simulate sign up process
+            setTimeout(() => {
+                // Check if student ID already exists
+                const existingStudents = JSON.parse(localStorage.getItem('registeredStudents')) || [];
+                const existingStudent = existingStudents.find(s => s.id === studentId);
+                
+                if (existingStudent) {
+                    alert('A student with this ID already exists. Please use a different ID or sign in instead.');
+                    signupBtn.innerHTML = '<i class="fas fa-user-plus"></i> Sign Up';
+                    signupBtn.disabled = false;
+                } else {
+                    // Create new student account
+                    const newStudent = {
+                        id: studentId,
+                        name: studentName,
+                        class: studentClass,
+                        registrationDate: new Date().toISOString()
+                    };
+                    
+                    existingStudents.push(newStudent);
+                    localStorage.setItem('registeredStudents', JSON.stringify(existingStudents));
+                    
+                    // Store student info and log them in
+                    localStorage.setItem('studentLoggedIn', 'true');
+                    localStorage.setItem('studentId', studentId);
+                    localStorage.setItem('studentName', studentName);
+                    localStorage.setItem('studentClass', studentClass);
+                    localStorage.setItem('loginTime', new Date().toISOString());
+                    
+                    alert('Account created successfully! Welcome to Evalytics.');
+                    
+                    // Redirect to student dashboard
+                    window.location.href = 'student-dashboard.html';
+                }
+            }, 1500);
+        });
+        
+        // Check if already logged in
+        if (localStorage.getItem('studentLoggedIn') === 'true') {
+            window.location.href = 'student-dashboard.html';
+        }
+    </script>
+</body>
+</html>

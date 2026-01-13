@@ -3,26 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EduFeedback AI - Revolutionizing Education with AI</title>
+    <title>Evalytics - Revolutionizing Education with AI</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg-gradient-start: #E59A59;
+            --bg-gradient-end: #712E1E;
+            --text-color: #333;
+            --text-light: white;
+            --card-bg: white;
+            --feature-bg: #f8f9fa;
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+            --hover-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .dark-mode {
+            --bg-gradient-start: #2c1810;
+            --bg-gradient-end: #1a0f0a;
+            --text-color: #f0f0f0;
+            --text-light: #f0f0f0;
+            --card-bg: #1e1e1e;
+            --feature-bg: #121212;
+            --shadow: 0 10px 30px rgba(0,0,0,0.3);
+            --hover-shadow: 0 10px 25px rgba(0,0,0,0.4);
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
         
         body {
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: var(--text-color);
             overflow-x: hidden;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 50px;
+            padding: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .dark-mode .theme-toggle {
+            background-color: rgba(30, 30, 30, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .theme-btn {
+            border: none;
+            background: transparent;
+            color: var(--text-color);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: all 0.2s ease;
+        }
+
+        .theme-btn.active {
+            background-color: #E59A59;
+            color: white;
         }
         
         .hero {
-            background: linear-gradient(135deg, #E59A59 0%, #712E1E 100%);
-            color: white;
+            background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+            color: var(--text-light);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -60,6 +123,7 @@
             font-weight: 700;
             margin-bottom: 1.5rem;
             animation: fadeInUp 1s ease-out;
+            color: var(--text-light);
         }
         
         .hero p {
@@ -67,6 +131,7 @@
             margin-bottom: 2.5rem;
             opacity: 0.9;
             animation: fadeInUp 1s ease-out 0.2s both;
+            color: var(--text-light);
         }
         
         .cta-buttons {
@@ -91,29 +156,38 @@
         }
         
         .btn-primary {
-            background: white;
+            background: var(--card-bg);
             color: #E59A59;
         }
         
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            box-shadow: var(--hover-shadow);
         }
         
         .btn-outline {
             background: transparent;
-            color: white;
-            border: 2px solid white;
+            color: var(--text-light);
+            border: 2px solid var(--text-light);
         }
         
         .btn-outline:hover {
-            background: white;
+            background: var(--card-bg);
             color: #E59A59;
         }
         
         .features {
             padding: 5rem 0;
-            background: #f8f9fa;
+            background: var(--feature-bg);
+        }
+        
+        .features h2 {
+            color: var(--text-color);
+        }
+        
+        .features p {
+            color: var(--text-color);
+            opacity: 0.8;
         }
         
         .features-grid {
@@ -124,12 +198,13 @@
         }
         
         .feature {
-            background: white;
+            background: var(--card-bg);
             padding: 2.5rem;
             border-radius: 20px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow);
             transition: transform 0.3s ease;
+            border: 1px solid rgba(229, 154, 89, 0.1);
         }
         
         .feature:hover {
@@ -153,13 +228,27 @@
             font-family: 'Poppins', sans-serif;
             font-size: 1.5rem;
             margin-bottom: 1rem;
-            color: #333;
+            color: var(--text-color);
+        }
+        
+        .feature p {
+            color: var(--text-color);
+            opacity: 0.8;
         }
         
         .stats {
-            background: #E59A59;
-            color: white;
+            background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
+            color: var(--text-light);
             padding: 4rem 0;
+        }
+        
+        .stats h2 {
+            color: var(--text-light);
+        }
+        
+        .stats p {
+            color: var(--text-light);
+            opacity: 0.9;
         }
         
         .stats-grid {
@@ -173,13 +262,22 @@
             font-size: 3rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+        
+        .stats-grid div {
+            color: var(--text-light);
         }
         
         .footer {
-            background: #333;
-            color: white;
+            background: var(--text-color);
+            color: var(--text-light);
             text-align: center;
             padding: 2rem 0;
+        }
+        
+        .dark-mode .footer {
+            background: #0a0a0a;
         }
         
         @keyframes fadeInUp {
@@ -194,6 +292,11 @@
         }
         
         @media (max-width: 768px) {
+            .theme-toggle {
+                top: 15px;
+                right: 15px;
+            }
+            
             .hero h1 {
                 font-size: 2.5rem;
             }
@@ -213,20 +316,34 @@
         }
     </style>
 </head>
-<body>
+<body class="light-mode">
+    <div class="theme-toggle">
+        <button class="theme-btn active" id="light-mode-btn">
+            <i class="fas fa-sun"></i>
+        </button>
+        <button class="theme-btn" id="dark-mode-btn">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>EduFeedback AI</h1>
+                <h1>Evalytics</h1>
                 <p>Transform your teaching with AI-powered feedback generation. Join thousands of educators who have already revolutionized their classrooms and saved 70% of their feedback time while improving student outcomes.</p>
                 <div class="cta-buttons">
                     <a href="login.html" class="btn btn-primary">
-                        <i class="fas fa-rocket"></i>
-                        Get Started
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        Teacher Login
                     </a>
-                    <a href="about.html" class="btn btn-outline">
-                        <i class="fas fa-info-circle"></i>
-                        Learn More
+                    <a href="student-login.html" class="btn btn-outline">
+                        <i class="fas fa-user-graduate"></i>
+                        Student Login
+                    </a>
+                </div>
+                <div style="margin-top: 1.5rem;">
+                    <a href="about.html" style="color: var(--text-light); opacity: 0.8; text-decoration: none; font-size: 1rem;">
+                        <i class="fas fa-info-circle"></i> Learn More About Evalytics
                     </a>
                 </div>
             </div>
@@ -310,7 +427,7 @@
             <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9; max-width: 600px; margin-left: auto; margin-right: auto;">Join thousands of educators who are already using AI to enhance their teaching and improve student outcomes. Get started in less than 2 minutes.</p>
             <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
                 <a href="login.html" style="
-                    background: white;
+                    background: var(--card-bg);
                     color: #E59A59;
                     padding: 1rem 2rem;
                     border: none;
@@ -323,13 +440,13 @@
                     transition: all 0.3s ease;
                     font-size: 1.1rem;
                 " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.2)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
-                    <i class="fas fa-rocket"></i>
-                    Get Started Free
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    Teacher Login
                 </a>
-                <a href="about.html" style="
+                <a href="student-login.html" style="
                     background: transparent;
-                    color: white;
-                    border: 2px solid white;
+                    color: var(--text-light);
+                    border: 2px solid var(--text-light);
                     padding: 1rem 2rem;
                     border-radius: 50px;
                     font-weight: 600;
@@ -339,9 +456,9 @@
                     gap: 0.5rem;
                     transition: all 0.3s ease;
                     font-size: 1.1rem;
-                " onmouseover="this.style.background='white'; this.style.color='#E59A59'" onmouseout="this.style.background='transparent'; this.style.color='white'">
-                    <i class="fas fa-info-circle"></i>
-                    Learn More
+                " onmouseover="this.style.background='var(--card-bg)'; this.style.color='#E59A59'" onmouseout="this.style.background='transparent'; this.style.color='var(--text-light)'">
+                    <i class="fas fa-user-graduate"></i>
+                    Student Login
                 </a>
             </div>
             <p style="margin-top: 1.5rem; font-size: 0.9rem; opacity: 0.8;">
@@ -354,9 +471,56 @@
     
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2026 EduFeedback AI. </p>
+            <p>&copy; 2026 Evalytics. </p>
             <p style="margin-top: 0.5rem; opacity: 0.7;">Revolutionizing education through artificial intelligence</p>
         </div>
     </footer>
+
+    <script>
+        // Theme toggle functionality
+        const lightModeBtn = document.getElementById('light-mode-btn');
+        const darkModeBtn = document.getElementById('dark-mode-btn');
+        const body = document.body;
+
+        // Check for saved theme
+        const savedTheme = localStorage.getItem('landingTheme') || 'light';
+        if (savedTheme === 'dark') {
+            enableDarkMode();
+        } else {
+            enableLightMode();
+        }
+
+        lightModeBtn.addEventListener('click', enableLightMode);
+        darkModeBtn.addEventListener('click', enableDarkMode);
+
+        function enableLightMode() {
+            body.classList.remove('dark-mode');
+            body.classList.add('light-mode');
+            lightModeBtn.classList.add('active');
+            darkModeBtn.classList.remove('active');
+            localStorage.setItem('landingTheme', 'light');
+        }
+
+        function enableDarkMode() {
+            body.classList.remove('light-mode');
+            body.classList.add('dark-mode');
+            darkModeBtn.classList.add('active');
+            lightModeBtn.classList.remove('active');
+            localStorage.setItem('landingTheme', 'dark');
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>

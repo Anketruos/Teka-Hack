@@ -227,7 +227,7 @@ function shareReport(button) {
         if (navigator.share) {
             navigator.share({
                 title: title,
-                text: `Check out this ${title} from EduFeedback AI`,
+                text: `Check out this ${title} from Evalytics`,
                 url: shareUrl
             }).catch(err => console.log('Error sharing:', err));
         } else {

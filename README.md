@@ -1,10 +1,10 @@
-# EduFeedback AI
+# Evalytics
 
 ## 🎯 Problem Statement
 Teachers spend countless hours providing personalized feedback to students, often leading to delayed responses and inconsistent quality. Students need timely, constructive feedback to improve their learning outcomes.
 
 ## 💡 Solution
-EduFeedback AI is an intelligent feedback generation platform that helps educators provide personalized, constructive feedback to students instantly using AI technology.
+Evalytics is an intelligent feedback generation platform that helps educators provide personalized, constructive feedback to students instantly using AI technology.
 
 ## ✨ Features
 - **AI-Powered Feedback Generation**: Generate personalized feedback for student assignments

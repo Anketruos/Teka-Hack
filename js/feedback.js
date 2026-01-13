@@ -118,18 +118,14 @@ document.addEventListener('DOMContentLoaded', function() {
                         <input type="text" class="form-input" id="assignment" placeholder="Assignment name">
                     </div>
                     <div class="form-group">
-                        <label>Grade (Optional)</label>
-                        <input type="number" class="form-input" id="grade" min="0" max="100" placeholder="Enter grade">
-                    </div>
-                    <div class="form-group">
-                        <label>Additional Notes</label>
-                        <textarea class="form-input" id="notes" rows="3" placeholder="Any specific instructions for AI..."></textarea>
+                        <label>Feedback Message</label>
+                        <textarea class="form-input" id="feedbackMessage" rows="4" placeholder="Enter your feedback message..."></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-outline modal-cancel">Cancel</button>
-                    <button class="btn btn-primary" id="generateFeedbackBtn">
-                        <i class="fas fa-robot"></i> Generate with AI
+                    <button class="btn btn-primary" id="sendFeedbackBtn">
+                        <i class="fas fa-paper-plane"></i> Send
                     </button>
                 </div>
             </div>
@@ -144,39 +140,35 @@ document.addEventListener('DOMContentLoaded', function() {
             if (e.target === modal) modal.remove();
         });
         
-        // Generate feedback button
-        modal.querySelector('#generateFeedbackBtn').addEventListener('click', async function() {
+        // Send feedback button
+        modal.querySelector('#sendFeedbackBtn').addEventListener('click', async function() {
             const studentName = modal.querySelector('#studentName').value;
             const subject = modal.querySelector('#subject').value;
             const assignment = modal.querySelector('#assignment').value;
-            const grade = modal.querySelector('#grade').value;
-            const notes = modal.querySelector('#notes').value;
+            const feedbackMessage = modal.querySelector('#feedbackMessage').value;
             
             if (!studentName || !assignment) {
                 alert('Please fill in student name and assignment.');
                 return;
             }
             
-            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating...';
+            if (!feedbackMessage.trim()) {
+                alert('Please enter a feedback message.');
+                return;
+            }
+            
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             this.disabled = true;
             
             try {
-                // Use AI engine to generate feedback
-                const aiEngine = new AIFeedbackEngine();
-                const result = await aiEngine.analyzeSubmission(studentName, subject, assignment, grade);
-                
-                // Create new feedback item
+                // Create new feedback item directly (no AI generation needed)
                 const newFeedback = {
                     id: Date.now(),
                     studentName,
                     subject,
                     assignment,
-                    grade,
-                    feedback: result.feedback,
-                    insights: result.insights,
-                    recommendations: result.recommendations,
-                    confidence: result.confidence,
-                    status: 'pending',
+                    feedback: feedbackMessage,
+                    status: 'sent',
                     date: new Date().toISOString()
                 };
                 
@@ -188,12 +180,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 addFeedbackToUI(newFeedback);
                 
                 modal.remove();
-                alert('Feedback generated successfully!');
+                alert(`Feedback sent to ${studentName} successfully!`);
                 
             } catch (error) {
-                console.error('Error generating feedback:', error);
-                alert('Error generating feedback. Please try again.');
-                this.innerHTML = '<i class="fas fa-robot"></i> Generate with AI';
+                console.error('Error sending feedback:', error);
+                alert('Error sending feedback. Please try again.');
+                this.innerHTML = '<i class="fas fa-paper-plane"></i> Send';
                 this.disabled = false;
             }
         });
@@ -221,8 +213,7 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
             <div class="feedback-content">
                 <p>${feedback.feedback}</p>
-                ${feedback.grade ? `<p><strong>Grade:</strong> ${feedback.grade}%</p>` : ''}
-                <p><strong>AI Confidence:</strong> ${(feedback.confidence * 100).toFixed(1)}%</p>
+                ${feedback.confidence ? `<p><strong>AI Confidence:</strong> ${(feedback.confidence * 100).toFixed(1)}%</p>` : ''}
             </div>
             <div class="feedback-actions">
                 <button class="btn-icon" onclick="viewFeedback(${feedback.id})">
@@ -240,38 +231,67 @@ document.addEventListener('DOMContentLoaded', function() {
         container.insertBefore(feedbackElement, container.firstChild);
     }
     
-    // Generate AI feedback from form
-    const generateAIBtn = document.querySelector('.form-actions .btn-outline');
-    if (generateAIBtn) {
-        generateAIBtn.addEventListener('click', async function() {
-            const studentSelect = document.querySelector('.generator-form select:nth-child(1)');
-            const assignmentSelect = document.querySelector('.generator-form select:nth-child(2)');
+    // Send feedback from form
+    const sendBtn = document.querySelector('.form-actions .btn-primary');
+    if (sendBtn) {
+        sendBtn.addEventListener('click', async function() {
+            const studentSelect = document.querySelector('.generator-form .form-group:nth-child(1) select');
+            const assignmentSelect = document.querySelector('.generator-form .form-group:nth-child(2) select');
             const instructions = document.querySelector('.generator-form textarea');
             
-            if (!studentSelect.value || !assignmentSelect.value) {
-                alert('Please select student and assignment.');
+            if (!studentSelect.value || studentSelect.value === 'Select Student') {
+                alert('Please select a student.');
                 return;
             }
             
-            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating...';
+            if (!assignmentSelect.value || assignmentSelect.value === 'Select Assignment') {
+                alert('Please select an assignment.');
+                return;
+            }
+            
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             this.disabled = true;
             
             try {
-                const aiEngine = new AIFeedbackEngine();
-                const result = await aiEngine.analyzeSubmission(
-                    studentSelect.value, 
-                    assignmentSelect.value.split(' ')[0], 
-                    assignmentSelect.value
-                );
+                // Get feedback message from textarea
+                const feedbackMessage = instructions.value.trim();
                 
-                // Show result in a modal or update the form
-                showFeedbackResult(result, studentSelect.value, assignmentSelect.value);
+                if (!feedbackMessage) {
+                    alert('Please enter a feedback message.');
+                    return;
+                }
+                
+                // Create and send feedback directly
+                const newFeedback = {
+                    id: Date.now(),
+                    studentName: studentSelect.value,
+                    subject: assignmentSelect.value.split(' ')[0],
+                    assignment: assignmentSelect.value,
+                    feedback: feedbackMessage,
+                    status: 'sent',
+                    date: new Date().toISOString()
+                };
+                
+                // Add to feedback data
+                let feedbackData = JSON.parse(localStorage.getItem('feedbackData')) || [];
+                feedbackData.push(newFeedback);
+                localStorage.setItem('feedbackData', JSON.stringify(feedbackData));
+                
+                // Add to UI
+                addFeedbackToUI(newFeedback);
+                
+                // Clear form
+                studentSelect.selectedIndex = 0;
+                assignmentSelect.selectedIndex = 0;
+                instructions.value = '';
+                
+                alert(`Feedback sent to ${studentSelect.value} successfully!`);
                 
             } catch (error) {
                 console.error('Error:', error);
-                alert('Error generating feedback. Please try again.');
+                alert('Error sending feedback. Please try again.');
             } finally {
-                this.innerHTML = '<i class="fas fa-magic"></i> Generate with AI';
+                this.innerHTML = '<i class="fas fa-paper-plane"></i> Send';
                 this.disabled = false;
             }
         });

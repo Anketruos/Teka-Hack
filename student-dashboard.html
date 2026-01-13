@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - Evalytics</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/global.css">
+    <style>
+        /* Student-specific styles that extend global.css */
+        .welcome-card {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            color: white;
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .welcome-card h2 {
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 0.5rem;
+        }
+        
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            background-color: var(--color-primary-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-accent);
+            font-size: 1.3rem;
+        }
+        
+        .student-info {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--color-primary);
+            border: 1px solid var(--border-color);
+        }
+        
+        .student-info h4 {
+            color: var(--color-primary);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .student-info p {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            margin: 0.2rem 0;
+        }
+        
+        .feedback-item {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--color-primary);
+            border: 1px solid var(--border-color);
+        }
+        
+        .feedback-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .feedback-subject {
+            font-weight: 600;
+            color: var(--text-color);
+        }
+        
+        .feedback-date {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .feedback-content {
+            color: var(--text-color);
+            line-height: 1.5;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+        }
+        
+        .empty-state i {
+            font-size: 3rem;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+        
+        .logout-btn {
+            margin-top: auto;
+            padding: 0.8rem 1rem;
+            background: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logout-btn:hover {
+            background: #c82333;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            background: var(--input-bg);
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--color-primary);
+        }
+        
+        .content-section {
+            display: none;
+        }
+        
+        .content-section.active {
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="light-mode">
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">E</div>
+                <div class="logo-text">Evalytics</div>
+            </div>
+            
+            <div class="student-info">
+                <h4><i class="fas fa-user-graduate"></i> Student Info</h4>
+                <p><strong>ID:</strong> <span id="displayStudentId">-</span></p>
+                <p><strong>Name:</strong> <span id="displayStudentName">-</span></p>
+            </div>
+            
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active" data-section="dashboard">
+                        <i class="fas fa-home nav-icon"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-section="feedback">
+                        <i class="fas fa-comments nav-icon"></i>
+                        <span>My Feedback</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-section="send-feedback">
+                        <i class="fas fa-paper-plane nav-icon"></i>
+                        <span>Send Feedback</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-section="settings">
+                        <i class="fas fa-cog nav-icon"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="theme-toggle">
+                <button class="theme-btn active" id="light-mode-btn">
+                    <i class="fas fa-sun"></i>
+                </button>
+                <button class="theme-btn" id="dark-mode-btn">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+            
+            <button class="logout-btn" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </aside>
+        
+        <main class="main-content">
+            <!-- Dashboard Section -->
+            <div id="dashboard-section" class="content-section active">
+                <header class="header">
+                    <h1 class="header-title">Student Dashboard</h1>
+                </header>
+                
+                <div class="welcome-card">
+                    <h2>Welcome back, <span id="welcomeName">Student</span>!</h2>
+                    <p>Here's your learning overview and recent feedback from your teachers.</p>
+                </div>
+                
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <h3>Recent Feedback</h3>
+                        </div>
+                        <p>You have <span id="feedbackCount">0</span> feedback messages from your teachers.</p>
+                        <button class="btn btn-primary" onclick="showSection('feedback')" style="margin-top: 1rem;">
+                            <i class="fas fa-eye"></i> View Feedback
+                        </button>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-paper-plane"></i>
+                            </div>
+                            <h3>Share Learning</h3>
+                        </div>
+                        <p>Let your teacher know what you've learned and understood from recent lessons.</p>
+                        <button class="btn btn-primary" onclick="showSection('send-feedback')" style="margin-top: 1rem;">
+                            <i class="fas fa-plus"></i> Send Feedback
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Feedback Section -->
+            <div id="feedback-section" class="content-section">
+                <header class="header">
+                    <h1 class="header-title">My Feedback</h1>
+                </header>
+                
+                <div class="card">
+                    <h3><i class="fas fa-comments"></i> Feedback from Teachers</h3>
+                    <div id="feedbackList">
+                        <div class="empty-state">
+                            <i class="fas fa-inbox"></i>
+                            <h4>No feedback yet</h4>
+                            <p>Your teachers haven't sent any feedback yet. Check back later!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Send Feedback Section -->
+            <div id="send-feedback-section" class="content-section">
+                <header class="header">
+                    <h1 class="header-title">Send Feedback to Teacher</h1>
+                </header>
+                
+                <div class="card">
+                    <h3><i class="fas fa-paper-plane"></i> Share Your Learning</h3>
+                    <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">Let your teacher know what you understood from the recent lessons and any questions you might have.</p>
+                    
+                    <form id="studentFeedbackForm">
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <select id="subject" class="form-input" required>
+                                <option value="">Select Subject</option>
+                                <option value="Mathematics">Mathematics</option>
+                                <option value="Science">Science</option>
+                                <option value="English">English</option>
+                                <option value="History">History</option>
+                                <option value="Geography">Geography</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="topic">Topic/Lesson</label>
+                            <input type="text" id="topic" class="form-input" placeholder="What topic or lesson is this about?" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="understanding">What I Understood</label>
+                            <textarea id="understanding" class="form-input" rows="4" placeholder="Explain what you learned and understood from the lesson..." required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="questions">Questions or Difficulties (Optional)</label>
+                            <textarea id="questions" class="form-input" rows="3" placeholder="Any questions or parts you found difficult?"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i> Send to Teacher
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Settings Section -->
+            <div id="settings-section" class="content-section">
+                <header class="header">
+                    <h1 class="header-title">Settings</h1>
+                </header>
+                
+                <div class="card">
+                    <h3><i class="fas fa-user"></i> Profile Information</h3>
+                    <div class="form-group">
+                        <label>Student ID</label>
+                        <input type="text" class="form-input" id="settingsStudentId" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" class="form-input" id="settingsStudentName">
+                    </div>
+                    <button class="btn btn-primary" onclick="updateProfile()">
+                        <i class="fas fa-save"></i> Update Profile
+                    </button>
+                </div>
+                
+                <div class="card" style="margin-top: 1.5rem;">
+                    <h3><i class="fas fa-bell"></i> Preferences</h3>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="emailNotifications" style="margin-right: 0.5rem;">
+                            Receive email notifications for new feedback
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="reminderNotifications" style="margin-right: 0.5rem;">
+                            Remind me to check feedback weekly
+                        </label>
+                    </div>
+                    <button class="btn btn-primary" onclick="updatePreferences()">
+                        <i class="fas fa-save"></i> Save Preferences
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Check authentication
+        if (localStorage.getItem('studentLoggedIn') !== 'true') {
+            window.location.href = 'student-login.html';
+        }
+        
+        // Theme toggle functionality
+        const lightModeBtn = document.getElementById('light-mode-btn');
+        const darkModeBtn = document.getElementById('dark-mode-btn');
+        const body = document.body;
+
+        // Apply saved theme
+        const savedTheme = localStorage.getItem('studentTheme') || 'light';
+        if (savedTheme === 'dark') {
+            enableDarkMode();
+        } else {
+            enableLightMode();
+        }
+
+        if (lightModeBtn) lightModeBtn.addEventListener('click', enableLightMode);
+        if (darkModeBtn) darkModeBtn.addEventListener('click', enableDarkMode);
+
+        function enableLightMode() {
+            body.classList.remove('dark-mode');
+            body.classList.add('light-mode');
+            if (lightModeBtn) lightModeBtn.classList.add('active');
+            if (darkModeBtn) darkModeBtn.classList.remove('active');
+            localStorage.setItem('studentTheme', 'light');
+        }
+
+        function enableDarkMode() {
+            body.classList.remove('light-mode');
+            body.classList.add('dark-mode');
+            if (darkModeBtn) darkModeBtn.classList.add('active');
+            if (lightModeBtn) lightModeBtn.classList.remove('active');
+            localStorage.setItem('studentTheme', 'dark');
+        }
+        
+        // Load student info
+        document.addEventListener('DOMContentLoaded', function() {
+            const studentId = localStorage.getItem('studentId');
+            const studentName = localStorage.getItem('studentName');
+            const studentClass = localStorage.getItem('studentClass') || 'Not specified';
+            
+            document.getElementById('displayStudentId').textContent = studentId;
+            document.getElementById('displayStudentName').textContent = studentName;
+            document.getElementById('welcomeName').textContent = studentName.split(' ')[0];
+            document.getElementById('settingsStudentId').value = studentId;
+            document.getElementById('settingsStudentName').value = studentName;
+            
+            // Add class info to student info section
+            const studentInfoDiv = document.querySelector('.student-info');
+            if (studentClass !== 'Not specified') {
+                studentInfoDiv.innerHTML += `<p><strong>Class:</strong> ${studentClass}</p>`;
+            }
+            
+            loadFeedback();
+            loadPreferences();
+        });
+        
+        // Navigation
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const section = this.getAttribute('data-section');
+                showSection(section);
+                
+                // Update active state
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+        
+        function showSection(sectionName) {
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            const targetSection = document.getElementById(sectionName + '-section');
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+        }
+        
+        // Student feedback form
+        document.getElementById('studentFeedbackForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const subject = document.getElementById('subject').value;
+            const topic = document.getElementById('topic').value;
+            const understanding = document.getElementById('understanding').value;
+            const questions = document.getElementById('questions').value;
+            
+            const feedback = {
+                id: Date.now(),
+                studentId: localStorage.getItem('studentId'),
+                studentName: localStorage.getItem('studentName'),
+                subject: subject,
+                topic: topic,
+                understanding: understanding,
+                questions: questions,
+                date: new Date().toISOString(),
+                status: 'sent'
+            };
+            
+            // Save to localStorage (in real app, this would be sent to server)
+            let studentFeedbacks = JSON.parse(localStorage.getItem('studentFeedbacks')) || [];
+            studentFeedbacks.push(feedback);
+            localStorage.setItem('studentFeedbacks', JSON.stringify(studentFeedbacks));
+            
+            // Reset form
+            this.reset();
+            
+            alert('Feedback sent to your teacher successfully!');
+        });
+        
+        function loadFeedback() {
+            // Load teacher feedback for this student
+            let teacherFeedbacks = JSON.parse(localStorage.getItem('feedbackData')) || [];
+            const studentName = localStorage.getItem('studentName');
+            
+            // Filter feedback for this student
+            const myFeedbacks = teacherFeedbacks.filter(f => 
+                f.studentName.toLowerCase() === studentName.toLowerCase()
+            );
+            
+            document.getElementById('feedbackCount').textContent = myFeedbacks.length;
+            
+            const feedbackList = document.getElementById('feedbackList');
+            
+            if (myFeedbacks.length === 0) {
+                feedbackList.innerHTML = `
+                    <div class="empty-state">
+                        <i class="fas fa-inbox"></i>
+                        <h4>No feedback yet</h4>
+                        <p>Your teachers haven't sent any feedback yet. Check back later!</p>
+                    </div>
+                `;
+            } else {
+                feedbackList.innerHTML = myFeedbacks.map(feedback => `
+                    <div class="feedback-item">
+                        <div class="feedback-header">
+                            <div class="feedback-subject">${feedback.subject} - ${feedback.assignment}</div>
+                            <div class="feedback-date">${new Date(feedback.date).toLocaleDateString()}</div>
+                        </div>
+                        <div class="feedback-content">${feedback.feedback}</div>
+                    </div>
+                `).join('');
+            }
+        }
+        
+        function updateProfile() {
+            const newName = document.getElementById('settingsStudentName').value;
+            localStorage.setItem('studentName', newName);
+            
+            // Update display
+            document.getElementById('displayStudentName').textContent = newName;
+            document.getElementById('welcomeName').textContent = newName.split(' ')[0];
+            
+            alert('Profile updated successfully!');
+        }
+        
+        function loadPreferences() {
+            const prefs = JSON.parse(localStorage.getItem('studentPreferences')) || {};
+            document.getElementById('emailNotifications').checked = prefs.emailNotifications || false;
+            document.getElementById('reminderNotifications').checked = prefs.reminderNotifications || false;
+        }
+        
+        function updatePreferences() {
+            const prefs = {
+                emailNotifications: document.getElementById('emailNotifications').checked,
+                reminderNotifications: document.getElementById('reminderNotifications').checked
+            };
+            
+            localStorage.setItem('studentPreferences', JSON.stringify(prefs));
+            alert('Preferences saved successfully!');
+        }
+        
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                localStorage.removeItem('studentLoggedIn');
+                localStorage.removeItem('studentId');
+                localStorage.removeItem('studentName');
+                localStorage.removeItem('loginTime');
+                window.location.href = 'student-login.html';
+            }
+        }
+    </script>
+</body>
+</html>

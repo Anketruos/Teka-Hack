@@ -1,9 +1,9 @@
-# EduFeedback AI - Demo Video Script
+# Evalytics - Demo Video Script
 
 ## 🎬 Demo Video Guide (2-3 minutes)
 
 ### Opening (15 seconds)
-"Hi! I'm excited to show you EduFeedback AI, a project I built for Teca Hacks 2026. This platform revolutionizes how teachers provide feedback to students using artificial intelligence."
+"Hi! I'm excited to show you Evalytics, a project I built for Teca Hacks 2026. This platform revolutionizes how teachers provide feedback to students using artificial intelligence."
 
 ### Problem Statement (20 seconds)
 "Teachers spend 5-7 hours per week writing feedback for student assignments. This leads to delayed responses, inconsistent quality, and teacher burnout. Students need timely, constructive feedback to improve their learning."
@@ -41,7 +41,7 @@
 "This solution can save teachers 70% of their feedback time while improving student engagement by 92%. Future plans include real AI API integration and LMS connectivity."
 
 ### Closing (10 seconds)
-"EduFeedback AI demonstrates how technology can enhance education while maintaining the human touch that's essential for effective teaching. Thank you!"
+"Evalytics demonstrates how technology can enhance education while maintaining the human touch that's essential for effective teaching. Thank you!"
 
 ## 🎥 Recording Tips
 
