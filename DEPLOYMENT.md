@@ -4,7 +4,7 @@
 
 ### Local Development
 1. Clone the repository
-2. Open `index.html` in your web browser
+2. Open `index.html` in your web browser (this is the landing page)
 3. No build process required - pure HTML/CSS/JS
 
 ### Live Demo
@@ -19,7 +19,8 @@ The project can be deployed to any static hosting service:
 
 ```
 evalytics/
-├── index.html              # Main dashboard
+├── index.html              # Landing page (GitHub Pages entry point)
+├── home.html               # Main teacher dashboard
 ├── about.html              # About/landing page
 ├── analytics.html          # Analytics dashboard
 ├── feedback.html           # Feedback management

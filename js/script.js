@@ -37,11 +37,11 @@ function enableDarkMode() {
 
 // Nav item active state
 const navLinks = document.querySelectorAll('.nav-link');
-const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+const currentPage = window.location.pathname.split('/').pop() || 'home.html';
 
 navLinks.forEach(link => {
     const linkHref = link.getAttribute('href');
-    if (linkHref === currentPage || (currentPage === '' && linkHref === 'index.html')) {
+    if (linkHref === currentPage || (currentPage === '' && linkHref === 'home.html')) {
         link.classList.add('active');
     }
     

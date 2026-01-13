@@ -50,7 +50,7 @@ Students regularly complete short surveys after lessons, and Evalytics analyzes 
 
 ## 🚀 How to Run
 1. Clone this repository  
-2. Open `index.html` in your browser  
+2. Open `index.html` in your browser (this will show the landing page)  
 3. Use the sidebar to navigate  
 4. Try submitting student surveys and viewing AI insights  
 
