@@ -1,75 +1,101 @@
 # Evalytics
 
 ## 🎯 Problem Statement
-Teachers spend countless hours providing personalized feedback to students, often leading to delayed responses and inconsistent quality. Students need timely, constructive feedback to improve their learning outcomes.
-
-## 💡 Solution
-Evalytics is an intelligent feedback generation platform that helps educators provide personalized, constructive feedback to students instantly using AI technology.
-
-## ✨ Features
-- **AI-Powered Feedback Generation**: Generate personalized feedback for student assignments
-- **Analytics Dashboard**: Track student performance and engagement metrics
-- **Report Generation**: Create comprehensive performance reports
-- **Multi-Subject Support**: Works across Mathematics, Science, English, and more
-- **Dark/Light Theme**: Customizable user interface
-- **Responsive Design**: Works on desktop and mobile devices
-
-## 🛠️ Technologies Used
-- **Frontend**: HTML5, CSS3, JavaScript (ES6+)
-- **Styling**: Custom CSS with CSS Grid and Flexbox
-- **Icons**: Font Awesome 6.4.0
-- **Fonts**: Google Fonts (Poppins, Inter)
-- **Theme**: Light/Dark mode with localStorage persistence
-
-## 🚀 How to Run
-1. Clone this repository
-2. Open `index.html` in your web browser
-3. Navigate through different sections using the sidebar
-4. Try the AI feedback generator on the dashboard
-
-## 🎨 Design Highlights
-- Clean, modern interface inspired by educational platforms
-- Intuitive navigation with active state indicators
-- Consistent color scheme and typography
-- Interactive elements with hover effects and animations
-
-## 🧠 AI Features (Simulated)
-- Intelligent feedback generation based on student performance
-- Performance trend analysis
-- Personalized learning recommendations
-- Automated report generation
-
-## 🏆 Hackathon Categories
-- **Best AI/ML**: AI-powered feedback generation system
-- **Best UI/UX Creativity**: Modern, intuitive educational interface
-- **Best Solo Build**: Complete full-stack educational solution
-
-## 🎯 Impact & Usefulness
-- **For Teachers**: Saves 70% of time spent on feedback writing
-- **For Students**: Receive instant, personalized feedback
-- **For Schools**: Improve overall educational outcomes and efficiency
-
-## 🚧 Challenges Faced
-1. **UI/UX Design**: Creating an intuitive interface for educators
-2. **Data Visualization**: Implementing charts and analytics without external libraries
-3. **Theme System**: Building a robust light/dark mode toggle
-4. **Responsive Design**: Ensuring compatibility across devices
-
-## 📚 What We Learned
-- Advanced CSS Grid and Flexbox techniques
-- JavaScript DOM manipulation and event handling
-- Local storage for theme persistence
-- Educational technology user experience design
-
-## 🔮 Future Enhancements
-- Real AI integration with OpenAI API
-- Backend database for data persistence
-- Multi-language support
-- Integration with popular LMS platforms
-- Mobile app development
-
-## 👨‍💻 Developer
-Built with ❤️ for Teca Hacks 2026
+Teachers often finish lessons without knowing how many students actually understood the topic. Feedback on assignments is also time-consuming, which delays student improvement and limits teaching effectiveness.
 
 ---
-*This project demonstrates the potential of AI in education, focusing on improving the feedback loop between educators and students.*
+
+## 💡 Solution
+**Evalytics** is an **AI-powered teaching insight and feedback platform** that helps educators understand student learning through surveys and provide meaningful, personalized feedback — all in one place.
+
+Students regularly complete short surveys after lessons, and Evalytics analyzes their responses to show what students understood, what they struggled with, and where teaching can improve. Teachers also use Evalytics to write and deliver clear, personalized feedback on assignments.
+
+---
+
+## ✨ Core Features
+- **Student Understanding Surveys**  
+  Collect student responses after lessons to measure understanding and engagement.
+
+- **AI-Powered Analysis**  
+  Automatically analyzes survey data to highlight learning gaps, trends, and class performance.
+
+- **Teacher Feedback Hub**  
+  Teachers write and deliver structured, personalized feedback to students in one place.
+
+- **Analytics Dashboard**  
+  Visualize class understanding, engagement, and progress over time.
+
+- **Report Generation**  
+  Generate clear summaries of learning trends to support teaching decisions.
+
+- **Multi-Subject Support**  
+  Works across Mathematics, Science, English, and more.
+
+- **Dark & Light Mode**  
+  Customizable, user-friendly interface.
+
+- **Responsive Design**  
+  Works smoothly on desktop and mobile devices.
+
+---
+
+## 🛠️ Technologies Used
+- **Frontend:** HTML5, CSS3, JavaScript (ES6+)
+- **Styling:** CSS Grid & Flexbox
+- **Icons:** Font Awesome 6.4.0
+- **Fonts:** Google Fonts (Poppins, Inter)
+- **Theme Persistence:** LocalStorage
+
+---
+
+## 🚀 How to Run
+1. Clone this repository  
+2. Open `index.html` in your browser  
+3. Use the sidebar to navigate  
+4. Try submitting student surveys and viewing AI insights  
+
+---
+
+## 🎨 Design Highlights
+- Clean, modern education-focused interface  
+- Intuitive sidebar navigation  
+- Smooth animations and interactive elements  
+- Consistent color system and typography  
+
+---
+
+## 🧠 AI Capabilities (Simulated)
+- Analyzes student survey responses  
+- Identifies learning gaps and trends  
+- Suggests teaching focus areas  
+- Supports structured feedback creation  
+
+---
+
+## 🏆 Hackathon Categories
+- **Best AI/ML** – Intelligent classroom insight system  
+- **Best UI/UX Creativity** – Clean, modern education interface  
+- **Best Solo Build** – Complete end-to-end educational platform  
+
+---
+
+## 🎯 Impact
+- **For Teachers:** See what students really understand and improve lessons faster  
+- **For Students:** Feel heard and receive meaningful feedback  
+- **For Schools:** Better learning outcomes through data-driven teaching  
+
+---
+
+## 🔮 Future Enhancements
+- Real AI integration  
+- Secure backend and database  
+- Multi-language support  
+- LMS integration  
+- Mobile app  
+
+---
+
+## 👨‍💻 Developer
+Built By Arsema and Aster
+
+---
