@@ -43,6 +43,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="about.html" class="nav-link">
+                        <i class="fas fa-info-circle nav-icon"></i>
+                        <span>About</span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="settings.html" class="nav-link">
                         <i class="fas fa-cog nav-icon"></i>
                         <span>Settings</span>
@@ -67,9 +73,9 @@
                     <button class="btn btn-primary">
                         <i class="fas fa-plus"></i> New Feedback
                     </button>
-                    <div class="user-profile">
-                        <div class="user-avatar">JD</div>
-                        <span>John Doe</span>
+                    <div class="user-profile" id="userProfile">
+                        <div class="user-avatar" id="userAvatar">U</div>
+                        <span id="userName">User</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                 </div>
@@ -287,6 +293,7 @@
     </div>
 
     <script src="js/script.js"></script>
+    <script src="js/ai-engine.js"></script>
     <script src="js/feedback.js"></script>
 </body>
 </html>

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - EduFeedback AI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/global.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #E59A59 0%, #712E1E 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .login-container {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 450px;
+            border: 1px solid var(--border-color);
+        }
+        
+        .login-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .logo-text {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.6rem;
+            color: var(--text-color);
+        }
+        
+        .logo-text span {
+            color: var(--color-primary);
+        }
+        
+        .login-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .login-subtitle {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            background: var(--input-bg);
+            color: var(--text-color);
+            font-size: 1rem;
+            transition: all 0.2s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(229, 154, 89, 0.1);
+        }
+        
+        .input-icon {
+            position: relative;
+        }
+        
+        .input-icon i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+        }
+        
+        .input-icon .form-input {
+            padding-left: 3rem;
+        }
+        
+        .forgot-password {
+            text-align: right;
+            margin-bottom: 2rem;
+        }
+        
+        .forgot-password a {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+        
+        .login-btn {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-bottom: 1.5rem;
+        }
+        
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(229, 154, 89, 0.3);
+        }
+        
+        .divider {
+            text-align: center;
+            margin: 1.5rem 0;
+            position: relative;
+            color: var(--text-secondary);
+        }
+        
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--border-color);
+        }
+        
+        .divider span {
+            background: var(--card-bg);
+            padding: 0 1rem;
+        }
+        
+        .demo-login {
+            width: 100%;
+            padding: 1rem;
+            background: var(--sidebar-bg);
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-bottom: 2rem;
+        }
+        
+        .demo-login:hover {
+            background: var(--color-primary-light);
+            border-color: var(--color-primary);
+        }
+        
+        .signup-link {
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        
+        .signup-link a {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
+        
+        .theme-toggle-login {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            display: flex;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50px;
+            padding: 4px;
+        }
+        
+        .theme-btn-login {
+            border: none;
+            background: transparent;
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+        }
+        
+        .theme-btn-login.active {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 2rem;
+                margin: 1rem;
+            }
+            
+            .theme-toggle-login {
+                top: 1rem;
+                right: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="light-mode">
+    <div class="theme-toggle-login">
+        <button class="theme-btn-login active" id="light-mode-btn">
+            <i class="fas fa-sun"></i>
+        </button>
+        <button class="theme-btn-login" id="dark-mode-btn">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    
+    <div class="login-container">
+        <div class="login-header">
+            <div class="logo-container">
+                <div class="logo-icon">EF</div>
+                <div class="logo-text">Edu<span>Feedback</span> AI</div>
+            </div>
+            <h1 class="login-title">Welcome Back</h1>
+            <p class="login-subtitle">Sign in to your account to continue</p>
+        </div>
+        
+        <form id="loginForm">
+            <div class="form-group">
+                <label class="form-label">Email Address</label>
+                <div class="input-icon">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" class="form-input" placeholder="Enter your email" required>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Password</label>
+                <div class="input-icon">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" class="form-input" placeholder="Enter your password" required>
+                </div>
+            </div>
+            
+            <div class="forgot-password">
+                <a href="#" onclick="alert('Password reset functionality would be implemented here.')">Forgot Password?</a>
+            </div>
+            
+            <button type="submit" class="login-btn">
+                <i class="fas fa-sign-in-alt"></i>
+                Sign In
+            </button>
+        </form>
+        
+        <div class="divider">
+            <span>or</span>
+        </div>
+        
+        <button class="demo-login" onclick="demoLogin()">
+            <i class="fas fa-play-circle"></i>
+            Try Demo Account
+        </button>
+        
+        <div class="signup-link">
+            Don't have an account? <a href="register.html">Sign up here</a>
+        </div>
+    </div>
+
+    <script>
+        // Theme toggle functionality
+        const lightModeBtn = document.getElementById('light-mode-btn');
+        const darkModeBtn = document.getElementById('dark-mode-btn');
+        const body = document.body;
+
+        // Check for saved theme
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            enableDarkMode();
+        } else {
+            enableLightMode();
+        }
+
+        lightModeBtn.addEventListener('click', enableLightMode);
+        darkModeBtn.addEventListener('click', enableDarkMode);
+
+        function enableLightMode() {
+            body.classList.remove('dark-mode');
+            body.classList.add('light-mode');
+            lightModeBtn.classList.add('active');
+            darkModeBtn.classList.remove('active');
+            localStorage.setItem('theme', 'light');
+        }
+
+        function enableDarkMode() {
+            body.classList.remove('light-mode');
+            body.classList.add('dark-mode');
+            darkModeBtn.classList.add('active');
+            lightModeBtn.classList.remove('active');
+            localStorage.setItem('theme', 'dark');
+        }
+
+        // Login form handling
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = this.querySelector('input[type="email"]').value;
+            const password = this.querySelector('input[type="password"]').value;
+            
+            // Simulate login process
+            const loginBtn = this.querySelector('.login-btn');
+            const originalText = loginBtn.innerHTML;
+            
+            loginBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing In...';
+            loginBtn.disabled = true;
+            
+            setTimeout(() => {
+                // Store user session
+                localStorage.setItem('userLoggedIn', 'true');
+                localStorage.setItem('userEmail', email);
+                localStorage.setItem('userName', email.split('@')[0]);
+                
+                // Redirect to dashboard
+                window.location.href = 'index.html';
+            }, 1500);
+        });
+
+        // Demo login function
+        function demoLogin() {
+            localStorage.setItem('userLoggedIn', 'true');
+            localStorage.setItem('userEmail', 'demo@edufeedback.ai');
+            localStorage.setItem('userName', 'Demo User');
+            
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

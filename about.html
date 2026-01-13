@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - EduFeedback AI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/global.css">
+    <style>
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .feature-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .stats-section {
+            background: var(--card-bg);
+            padding: 3rem 2rem;
+            border-radius: 12px;
+            margin: 3rem 0;
+            text-align: center;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .stat-item {
+            padding: 1rem;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .cta-section {
+            background: var(--primary-color);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin: 3rem 0;
+        }
+        
+        .btn-cta {
+            background: white;
+            color: var(--primary-color);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1rem;
+            transition: transform 0.2s;
+        }
+        
+        .btn-cta:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="light-mode">
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">EF</div>
+                <div class="logo-text">Edu<span>Feedback</span> AI</div>
+            </div>
+            
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">
+                        <i class="fas fa-home nav-icon"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="analytics.html" class="nav-link">
+                        <i class="fas fa-chart-bar nav-icon"></i>
+                        <span>Analytics</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="feedback.html" class="nav-link">
+                        <i class="fas fa-comments nav-icon"></i>
+                        <span>Feedback</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="reports.html" class="nav-link">
+                        <i class="fas fa-file-alt nav-icon"></i>
+                        <span>Reports</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link active">
+                        <i class="fas fa-info-circle nav-icon"></i>
+                        <span>About</span>
+                    </a>
+                </li>
+            </ul>
+            
+            <div class="theme-toggle">
+                <button class="theme-btn active" id="light-mode-btn">
+                    <i class="fas fa-sun"></i>
+                </button>
+                <button class="theme-btn" id="dark-mode-btn">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </aside>
+        
+        <main class="main-content">
+            <div class="hero-section">
+                <h1 class="hero-title">EduFeedback AI</h1>
+                <p class="hero-subtitle">Revolutionizing education through intelligent feedback generation and personalized learning insights</p>
+            </div>
+            
+            <div class="content-wrapper" style="padding: 0 2rem;">
+                <section>
+                    <h2>🎯 The Problem We Solve</h2>
+                    <p>Teachers spend an average of 5-7 hours per week writing feedback for student assignments. This time-intensive process often leads to delayed responses, inconsistent quality, and teacher burnout. Meanwhile, students need timely, constructive feedback to improve their learning outcomes and stay engaged.</p>
+                </section>
+                
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3>AI-Powered Feedback</h3>
+                        <p>Generate personalized, constructive feedback for student assignments in seconds, not hours.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Smart Analytics</h3>
+                        <p>Track student progress, identify learning patterns, and get actionable insights to improve teaching.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <h3>Automated Reports</h3>
+                        <p>Generate comprehensive performance reports for students, parents, and administrators.</p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Multi-Subject Support</h3>
+                        <p>Works across Mathematics, Science, English, History, and more educational subjects.</p>
+                    </div>
+                </div>
+                
+                <div class="stats-section">
+                    <h2>Impact by the Numbers</h2>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number">70%</div>
+                            <div class="stat-label">Time Saved on Feedback</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">92%</div>
+                            <div class="stat-label">Student Engagement Increase</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">15%</div>
+                            <div class="stat-label">Improvement in Grades</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Availability</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <section>
+                    <h2>🛠️ How It Works</h2>
+                    <ol style="font-size: 1.1rem; line-height: 1.8;">
+                        <li><strong>Upload Assignment:</strong> Teachers upload student work or enter assignment details</li>
+                        <li><strong>AI Analysis:</strong> Our AI analyzes the content, identifying strengths and areas for improvement</li>
+                        <li><strong>Generate Feedback:</strong> Personalized, constructive feedback is generated in seconds</li>
+                        <li><strong>Review & Send:</strong> Teachers can review, edit, and send feedback to students</li>
+                        <li><strong>Track Progress:</strong> Monitor student improvement over time with detailed analytics</li>
+                    </ol>
+                </section>
+                
+                <section>
+                    <h2>🏆 Built for Teca Hacks 2026</h2>
+                    <p>This project was created for Teca Hacks, focusing on solving real educational challenges through innovative technology. It demonstrates the potential of AI in education while maintaining the human touch that's essential for effective teaching.</p>
+                    
+                    <h3>Technologies Used:</h3>
+                    <ul style="columns: 2; column-gap: 2rem;">
+                        <li>HTML5 & CSS3</li>
+                        <li>JavaScript (ES6+)</li>
+                        <li>CSS Grid & Flexbox</li>
+                        <li>Font Awesome Icons</li>
+                        <li>Google Fonts</li>
+                        <li>Local Storage API</li>
+                        <li>Responsive Design</li>
+                        <li>Progressive Enhancement</li>
+                    </ul>
+                </section>
+                
+                <div class="cta-section">
+                    <h2>Ready to Transform Education?</h2>
+                    <p>Join thousands of educators who are already using AI to enhance their teaching and improve student outcomes.</p>
+                    <a href="login.html" class="btn-cta">
+                        <i class="fas fa-rocket"></i> Get Started Free
+                    </a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

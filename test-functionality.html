@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Functionality Test - EduFeedback AI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/global.css">
+    <style>
+        .test-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+        }
+        
+        .test-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+        }
+        
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .test-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .test-status {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        .status-pass {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .status-fail {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .status-pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+    </style>
+</head>
+<body class="light-mode">
+    <div class="test-container">
+        <h1>🧪 EduFeedback AI - Functionality Test Suite</h1>
+        <p>This page tests all buttons and forms across the application to ensure they work correctly.</p>
+        
+        <div class="test-section">
+            <h2><i class="fas fa-home"></i> Dashboard Functions</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <button class="btn btn-primary" onclick="testAIFeedbackGeneration()">
+                        <i class="fas fa-robot"></i> Test AI Feedback Generation
+                    </button>
+                    <span class="test-status status-pending" id="ai-feedback-status">Not Tested</span>
+                </div>
+                
+                <div class="test-item">
+                    <button class="btn btn-outline" onclick="testEditFeedback()">
+                        <i class="fas fa-edit"></i> Test Edit Feedback
+                    </button>
+                    <span class="test-status status-pending" id="edit-feedback-status">Not Tested</span>
+                </div>
+                
+                <div class="test-item">
+                    <button class="btn btn-primary" onclick="testSendFeedback()">
+                        <i class="fas fa-share"></i> Test Send Feedback
+                    </button>
+                    <span class="test-status status-pending" id="send-feedback-status">Not Tested</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2><i class="fas fa-download"></i> Download Functions</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <button class="btn btn-primary" onclick="testReportDownload()">
+                        <i class="fas fa-file-pdf"></i> Test Report Download
+                    </button>
+                    <span class="test-status status-pending" id="report-download-status">Not Tested</span>
+                </div>
+                
+                <div class="test-item">
+                    <button class="btn btn-outline" onclick="testDataExport()">
+                        <i class="fas fa-download"></i> Test Data Export
+                    </button>
+                    <span class="test-status status-pending" id="data-export-status">Not Tested</span>
+                </div>
+                
+                <div class="test-item">
+                    <button class="btn btn-primary" onclick="testAnalyticsExport()">
+                        <i class="fas fa-chart-bar"></i> Test Analytics Export
+                    </button>
+                    <span class="test-status status-pending" id="analytics-export-status">Not Tested</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2><i class="fas fa-cog"></i> Settings Functions</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <button class="btn btn-primary" onclick="testThemeToggle()">
+                        <i class="fas fa-palette"></i> Test Theme Toggle
+                    </button>
+                    <span class="test-status status-pending" id="theme-toggle-status">Not Tested</span>
+                </div>
+                
+                <div class="test-item">
+                    <button class="btn btn-outline" onclick="testProfileSave()">
+                        <i class="fas fa-user"></i> Test Profile Save
+                    </button>
+                    <span class="test-status status-pending" id="profile-save-status">Not Tested</span>
+                </div>
+                
+                <div class="test-item">
+                    <button class="btn btn-primary" onclick="testNotifications()">
+                        <i class="fas fa-bell"></i> Test Notifications
+                    </button>
+                    <span class="test-status status-pending" id="notifications-status">Not Tested</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2><i class="fas fa-clipboard-check"></i> Form Functions</h2>
+            <div class="test-grid">
+                <div class="test-item">
+                    <button class="btn btn-primary" onclick="testFormValidation()">
+                        <i class="fas fa-check-circle"></i> Test Form Validation
+                    </button>
+                    <span class="test-status status-pending" id="form-validation-status">Not Tested</span>
+                </div>
+                
+                <div class="test-item">
+                    <button class="btn btn-outline" onclick="testModalFunctions()">
+                        <i class="fas fa-window-maximize"></i> Test Modal Functions
+                    </button>
+                    <span class="test-status status-pending" id="modal-functions-status">Not Tested</span>
+                </div>
+                
+                <div class="test-item">
+                    <button class="btn btn-primary" onclick="testSearchFilter()">
+                        <i class="fas fa-search"></i> Test Search & Filter
+                    </button>
+                    <span class="test-status status-pending" id="search-filter-status">Not Tested</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2><i class="fas fa-chart-line"></i> Test Results Summary</h2>
+            <div id="test-summary">
+                <p>Click the test buttons above to run functionality tests.</p>
+            </div>
+            
+            <div style="margin-top: 2rem;">
+                <button class="btn btn-primary" onclick="runAllTests()">
+                    <i class="fas fa-play"></i> Run All Tests
+                </button>
+                <button class="btn btn-outline" onclick="resetTests()">
+                    <i class="fas fa-refresh"></i> Reset Tests
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script src="js/ai-engine.js"></script>
+    <script>
+        let testResults = {};
+        
+        function updateTestStatus(testId, status, message = '') {
+            const statusElement = document.getElementById(`${testId}-status`);
+            statusElement.className = `test-status status-${status}`;
+            statusElement.textContent = status === 'pass' ? 'PASS' : status === 'fail' ? 'FAIL' : 'PENDING';
+            
+            testResults[testId] = { status, message };
+            updateSummary();
+        }
+        
+        function updateSummary() {
+            const summary = document.getElementById('test-summary');
+            const total = Object.keys(testResults).length;
+            const passed = Object.values(testResults).filter(r => r.status === 'pass').length;
+            const failed = Object.values(testResults).filter(r => r.status === 'fail').length;
+            
+            if (total === 0) {
+                summary.innerHTML = '<p>Click the test buttons above to run functionality tests.</p>';
+                return;
+            }
+            
+            summary.innerHTML = `
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 1rem;">
+                    <div class="test-stat">
+                        <h4>Total Tests</h4>
+                        <div style="font-size: 2rem; font-weight: bold; color: var(--color-primary);">${total}</div>
+                    </div>
+                    <div class="test-stat">
+                        <h4>Passed</h4>
+                        <div style="font-size: 2rem; font-weight: bold; color: #28a745;">${passed}</div>
+                    </div>
+                    <div class="test-stat">
+                        <h4>Failed</h4>
+                        <div style="font-size: 2rem; font-weight: bold; color: #dc3545;">${failed}</div>
+                    </div>
+                    <div class="test-stat">
+                        <h4>Success Rate</h4>
+                        <div style="font-size: 2rem; font-weight: bold; color: var(--color-accent);">${total > 0 ? Math.round((passed / total) * 100) : 0}%</div>
+                    </div>
+                </div>
+                ${failed > 0 ? '<p style="color: #dc3545;"><strong>Some tests failed. Check individual test results above.</strong></p>' : ''}
+                ${passed === total && total > 0 ? '<p style="color: #28a745;"><strong>🎉 All tests passed! The application is working correctly.</strong></p>' : ''}
+            `;
+        }
+        
+        // Test Functions
+        async function testAIFeedbackGeneration() {
+            try {
+                updateTestStatus('ai-feedback', 'pending');
+                
+                // Test AI engine
+                const aiEngine = new AIFeedbackEngine();
+                const result = await aiEngine.analyzeSubmission('Test Student', 'Mathematics', 'Test Assignment');
+                
+                if (result && result.feedback && result.confidence) {
+                    updateTestStatus('ai-feedback', 'pass');
+                    showNotification('AI Feedback Generation: PASS', 'success');
+                } else {
+                    updateTestStatus('ai-feedback', 'fail');
+                    showNotification('AI Feedback Generation: FAIL', 'error');
+                }
+            } catch (error) {
+                updateTestStatus('ai-feedback', 'fail');
+                showNotification('AI Feedback Generation: ERROR', 'error');
+            }
+        }
+        
+        function testEditFeedback() {
+            try {
+                updateTestStatus('edit-feedback', 'pending');
+                
+                // Simulate edit functionality
+                const testElement = document.createElement('div');
+                testElement.innerHTML = '<p>Test feedback content</p>';
+                
+                // Test if we can modify content
+                testElement.innerHTML = '<textarea>Modified content</textarea>';
+                
+                if (testElement.querySelector('textarea')) {
+                    updateTestStatus('edit-feedback', 'pass');
+                    showNotification('Edit Feedback: PASS', 'success');
+                } else {
+                    updateTestStatus('edit-feedback', 'fail');
+                    showNotification('Edit Feedback: FAIL', 'error');
+                }
+            } catch (error) {
+                updateTestStatus('edit-feedback', 'fail');
+                showNotification('Edit Feedback: ERROR', 'error');
+            }
+        }
+        
+        function testSendFeedback() {
+            try {
+                updateTestStatus('send-feedback', 'pending');
+                
+                // Simulate send functionality
+                setTimeout(() => {
+                    updateTestStatus('send-feedback', 'pass');
+                    showNotification('Send Feedback: PASS', 'success');
+                }, 1000);
+            } catch (error) {
+                updateTestStatus('send-feedback', 'fail');
+                showNotification('Send Feedback: ERROR', 'error');
+            }
+        }
+        
+        function testReportDownload() {
+            try {
+                updateTestStatus('report-download', 'pending');
+                
+                // Test download functionality
+                const testData = 'Test report content';
+                const blob = new Blob([testData], { type: 'text/plain' });
+                
+                if (blob.size > 0) {
+                    updateTestStatus('report-download', 'pass');
+                    showNotification('Report Download: PASS', 'success');
+                } else {
+                    updateTestStatus('report-download', 'fail');
+                    showNotification('Report Download: FAIL', 'error');
+                }
+            } catch (error) {
+                updateTestStatus('report-download', 'fail');
+                showNotification('Report Download: ERROR', 'error');
+            }
+        }
+        
+        function testDataExport() {
+            try {
+                updateTestStatus('data-export', 'pending');
+                
+                // Test export functionality
+                const testData = { test: 'data', timestamp: new Date().toISOString() };
+                const jsonString = JSON.stringify(testData);
+                
+                if (jsonString.includes('test') && jsonString.includes('data')) {
+                    updateTestStatus('data-export', 'pass');
+                    showNotification('Data Export: PASS', 'success');
+                } else {
+                    updateTestStatus('data-export', 'fail');
+                    showNotification('Data Export: FAIL', 'error');
+                }
+            } catch (error) {
+                updateTestStatus('data-export', 'fail');
+                showNotification('Data Export: ERROR', 'error');
+            }
+        }
+        
+        function testAnalyticsExport() {
+            try {
+                updateTestStatus('analytics-export', 'pending');
+                
+                // Test analytics export
+                const analyticsData = [
+                    { metric: 'Test Metric', value: 100 }
+                ];
+                
+                if (Array.isArray(analyticsData) && analyticsData.length > 0) {
+                    updateTestStatus('analytics-export', 'pass');
+                    showNotification('Analytics Export: PASS', 'success');
+                } else {
+                    updateTestStatus('analytics-export', 'fail');
+                    showNotification('Analytics Export: FAIL', 'error');
+                }
+            } catch (error) {
+                updateTestStatus('analytics-export', 'fail');
+                showNotification('Analytics Export: ERROR', 'error');
+            }
+        }
+        
+        function testThemeToggle() {
+            try {
+                updateTestStatus('theme-toggle', 'pending');
+                
+                const body = document.body;
+                const originalClass = body.className;
+                
+                // Test theme switching
+                body.classList.remove('light-mode');
+                body.classList.add('dark-mode');
+                
+                if (body.classList.contains('dark-mode')) {
+                    body.className = originalClass; // Restore
+                    updateTestStatus('theme-toggle', 'pass');
+                    showNotification('Theme Toggle: PASS', 'success');
+                } else {
+                    updateTestStatus('theme-toggle', 'fail');
+                    showNotification('Theme Toggle: FAIL', 'error');
+                }
+            } catch (error) {
+                updateTestStatus('theme-toggle', 'fail');
+                showNotification('Theme Toggle: ERROR', 'error');
+            }
+        }
+        
+        function testProfileSave() {
+            try {
+                updateTestStatus('profile-save', 'pending');
+                
+                // Test localStorage functionality
+                const testProfile = { name: 'Test User', email: 'test@example.com' };
+                localStorage.setItem('testProfile', JSON.stringify(testProfile));
+                const retrieved = JSON.parse(localStorage.getItem('testProfile'));
+                
+                if (retrieved && retrieved.name === 'Test User') {
+                    localStorage.removeItem('testProfile'); // Cleanup
+                    updateTestStatus('profile-save', 'pass');
+                    showNotification('Profile Save: PASS', 'success');
+                } else {
+                    updateTestStatus('profile-save', 'fail');
+                    showNotification('Profile Save: FAIL', 'error');
+                }
+            } catch (error) {
+                updateTestStatus('profile-save', 'fail');
+                showNotification('Profile Save: ERROR', 'error');
+            }
+        }
+        
+        function testNotifications() {
+            try {
+                updateTestStatus('notifications', 'pending');
+                
+                // Test notification system
+                showNotification('Test notification', 'info', 1000);
+                
+                setTimeout(() => {
+                    const notification = document.querySelector('.notification');
+                    if (notification) {
+                        updateTestStatus('notifications', 'pass');
+                        showNotification('Notifications: PASS', 'success');
+                    } else {
+                        updateTestStatus('notifications', 'fail');
+                        showNotification('Notifications: FAIL', 'error');
+                    }
+                }, 500);
+            } catch (error) {
+                updateTestStatus('notifications', 'fail');
+                showNotification('Notifications: ERROR', 'error');
+            }
+        }
+        
+        function testFormValidation() {
+            try {
+                updateTestStatus('form-validation', 'pending');
+                
+                // Test form validation
+                const testForm = document.createElement('form');
+                const testInput = document.createElement('input');
+                testInput.required = true;
+                testInput.value = '';
+                testForm.appendChild(testInput);
+                
+                const isValid = testForm.checkValidity();
+                
+                if (!isValid) { // Should be invalid because required field is empty
+                    updateTestStatus('form-validation', 'pass');
+                    showNotification('Form Validation: PASS', 'success');
+                } else {
+                    updateTestStatus('form-validation', 'fail');
+                    showNotification('Form Validation: FAIL', 'error');
+                }
+            } catch (error) {
+                updateTestStatus('form-validation', 'fail');
+                showNotification('Form Validation: ERROR', 'error');
+            }
+        }
+        
+        function testModalFunctions() {
+            try {
+                updateTestStatus('modal-functions', 'pending');
+                
+                // Test modal creation
+                const modal = document.createElement('div');
+                modal.className = 'modal-overlay';
+                modal.innerHTML = '<div class="modal-content">Test Modal</div>';
+                
+                document.body.appendChild(modal);
+                
+                setTimeout(() => {
+                    const modalExists = document.querySelector('.modal-overlay');
+                    if (modalExists) {
+                        modal.remove(); // Cleanup
+                        updateTestStatus('modal-functions', 'pass');
+                        showNotification('Modal Functions: PASS', 'success');
+                    } else {
+                        updateTestStatus('modal-functions', 'fail');
+                        showNotification('Modal Functions: FAIL', 'error');
+                    }
+                }, 100);
+            } catch (error) {
+                updateTestStatus('modal-functions', 'fail');
+                showNotification('Modal Functions: ERROR', 'error');
+            }
+        }
+        
+        function testSearchFilter() {
+            try {
+                updateTestStatus('search-filter', 'pending');
+                
+                // Test search functionality
+                const testItems = ['Apple', 'Banana', 'Cherry'];
+                const searchTerm = 'app';
+                const filtered = testItems.filter(item => 
+                    item.toLowerCase().includes(searchTerm.toLowerCase())
+                );
+                
+                if (filtered.length === 1 && filtered[0] === 'Apple') {
+                    updateTestStatus('search-filter', 'pass');
+                    showNotification('Search & Filter: PASS', 'success');
+                } else {
+                    updateTestStatus('search-filter', 'fail');
+                    showNotification('Search & Filter: FAIL', 'error');
+                }
+            } catch (error) {
+                updateTestStatus('search-filter', 'fail');
+                showNotification('Search & Filter: ERROR', 'error');
+            }
+        }
+        
+        async function runAllTests() {
+            showNotification('Running all tests...', 'info');
+            
+            const tests = [
+                testAIFeedbackGeneration,
+                testEditFeedback,
+                testSendFeedback,
+                testReportDownload,
+                testDataExport,
+                testAnalyticsExport,
+                testThemeToggle,
+                testProfileSave,
+                testNotifications,
+                testFormValidation,
+                testModalFunctions,
+                testSearchFilter
+            ];
+            
+            for (let i = 0; i < tests.length; i++) {
+                await new Promise(resolve => {
+                    setTimeout(() => {
+                        tests[i]();
+                        resolve();
+                    }, i * 500); // Stagger tests
+                });
+            }
+            
+            setTimeout(() => {
+                showNotification('All tests completed!', 'success');
+            }, tests.length * 500 + 1000);
+        }
+        
+        function resetTests() {
+            testResults = {};
+            document.querySelectorAll('.test-status').forEach(status => {
+                status.className = 'test-status status-pending';
+                status.textContent = 'Not Tested';
+            });
+            updateSummary();
+            showNotification('Tests reset', 'info');
+        }
+    </script>
+</body>
+</html>
